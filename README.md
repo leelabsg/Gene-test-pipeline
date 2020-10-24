@@ -18,9 +18,9 @@ ANNOVAR (ANNOtate VARiation) is a bioinformatics software tool for the interpret
    * download hg38 database
 <pre>
 <code>
-./perl annotate_variation.pl -buildver hg38 -downdb -webfrom annovar refGene humandb/
-# Or if perl is already installed,
-./annotate_variation.pl -buildver hg38 -downdb -webfrom annovar refGene humandb/
+        ./perl annotate_variation.pl -buildver hg38 -downdb -webfrom annovar refGene humandb/
+        # Or if perl is already installed,
+        ./annotate_variation.pl -buildver hg38 -downdb -webfrom annovar refGene humandb/
 </code>
 </pre>
 
@@ -61,7 +61,7 @@ SKAT_gene_SSD.R
       * Using the annovar result file(above converted file), create variant information table for each gene.  
       
         *Input = (Annovar result converted.txt, Name to save after converting, Order=T)*  
-        Order=T : Generate loss of function column by adding five variants(frameshift deletion, frameshift insertion, 
+        **Order=T** : Generate loss of function column by adding five variants(frameshift deletion, frameshift insertion, 
         startloss, stopgain, stoploss) and sort them in descending order
         
         <pre>
@@ -76,19 +76,19 @@ SKAT_gene_SSD.R
       
         *Input = (Annovar result converted.txt, bfile(bed, bim, fam) name, Name to save after processing, cov=NULL, method='SKAT', Is.binary, genefunc=c(), exonicfunc=c(), number=1000, leaveSSD=F, plinkver=2)*  
         
-        cov : Name of covariate cov.file, default=NULL  
-        method : {SKAT, SKAT-O, Burden}. default='SKAT'  
-        Is.binary : Check if phenotype is binary or not  
-        genefunc : Gene variables to be used for the SKAT test 
+        **cov** : Name of covariate cov.file, default=NULL  
+        **method** : {SKAT, SKAT-O, Burden}. default='SKAT'  
+        **Is.binary** : Check if phenotype is binary or not  
+        **genefunc** : Gene variables to be used for the SKAT test 
                  gene_varlist = { downstream, exonic, exonic;splicing, intergenic, intronic, ncRNA_exonic, ncRNA_exonic;splicing, 
                                   ncRNA_intronic, ncRNA_splicing, ncRNA_UTR5, splicing, upstream, upstream;downstream, UTR3, 
                                   UTR5, UTR5;UTR3 }   
-        exonicfunc : Exonic variables to be used for the SKAT test 
+        **exonicfunc** : Exonic variables to be used for the SKAT test 
                exonic_varlist = { frameshift deletion, frameshift insertion, nonframeshift deletion, nonframeshift insertion, 
                                   nonsynonymous SNV, startloss, stopgain, stoploss, synonymous SNV }  
-        number : The number of genes to be used for each time. if n=1000, analyze 1000 genes at a time. default = 1000  
-        leaveSSD : If leaveSSD=F, save the results separately for each number. default=F  
-        plinkver : plink version. default=2 (plink2)  
+        **number** : The number of genes to be used for each time. if n=1000, analyze 1000 genes at a time. default = 1000  
+        **leaveSSD** : If leaveSSD=F, save the results separately for each number. default=F  
+        **plinkver** : plink version. default=2 (plink2)  
         
         <pre>
         <code>
