@@ -86,11 +86,11 @@ SKAT_gene_SSD.R
         **method** : {SKAT, SKAT-O, Burden}. default='SKAT'  
         **Is.binary** : Check if phenotype is binary or not  
         **genefunc** : Gene variables to be used for the SKAT test   
-                * gene_varlist = { downstream, exonic, exonic;splicing, intergenic, intronic, ncRNA_exonic, ncRNA_exonic;splicing, 
-                                  ncRNA_intronic, ncRNA_splicing, ncRNA_UTR5, splicing, upstream, upstream;downstream, UTR3, 
+        * gene_varlist = { downstream, exonic, exonic;splicing, intergenic, intronic, ncRNA_exonic, ncRNA_exonic;splicing,  
+                                  ncRNA_intronic, ncRNA_splicing, ncRNA_UTR5, splicing, upstream, upstream;downstream, UTR3,  
                                   UTR5, UTR5;UTR3 }   
         **exonicfunc** : Exonic variables to be used for the SKAT test   
-                * exonic_varlist = { frameshift deletion, frameshift insertion, nonframeshift deletion, nonframeshift insertion, 
+        * exonic_varlist = { frameshift deletion, frameshift insertion, nonframeshift deletion, nonframeshift insertion,  
                                      nonsynonymous SNV, startloss, stopgain, stoploss, synonymous SNV }  
         **number** : The number of genes to be used for each time. if n=1000, analyze 1000 genes at a time. default = 1000  
         **leaveSSD** : If leaveSSD=F, save the results separately for each number. default=F  
