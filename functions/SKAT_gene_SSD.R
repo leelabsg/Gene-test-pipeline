@@ -468,10 +468,3 @@ Oneset_Genotype_SSD<-function(gene,anno,bfile,number){
     id<-SSD.INFO$SetInfo[which(SSD.INFO$SetInfo$SetID==gene),]$SetIndex
     Get_Genotypes_SSD(SSD.INFO,id)
 }
-
-
-#example
-#Read_Annovar('SNUH_annotation.hg38_multianno.txt','SNUH_anno.txt')
-#SKAT_gene_SSD('SNUH_anno.txt','SNUH','SNUH_result.txt',method='SKATO',Is.binary=T,genefunc=c('exonic','splicing','exonic.splicing'),exonicfunc=c('nonsynonymous SNV'),leaveSSD=T)
-#Oneset_Genotype_SSD('FYB2','SNUH_anno.txt','SNUH',1000)
-
