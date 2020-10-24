@@ -40,7 +40,7 @@ ANNOVAR (ANNOtate VARiation) is a bioinformatics software tool for the interpret
 
 For more information, please refer to this tutorial : <http://annovar.openbioinformatics.org/en/latest/user-guide/startup/#annotate_variationpl>
 
-If the above process is successfully performed, a file will be created [filename].hg38_multianno.txt.  
+If the above process is successfully performed, a file will be created [FILENAME].hg38_multianno.txt.  
 The following analysis can be carried out using the above multianno.txt file.
 
 # Gene based analysis using SKAT
@@ -61,6 +61,7 @@ SKAT_gene_SSD.R
       * Using the annovar result file(above converted file), create variant information table for each gene.  
       
         *Input = (Annovar result converted.txt, Name to save after converting, Order=T)*  
+        
         **Order=T** : Generate loss of function column by adding five variants(frameshift deletion, frameshift insertion, 
         startloss, stopgain, stoploss) and sort them in descending order
         
@@ -79,11 +80,11 @@ SKAT_gene_SSD.R
         **cov** : Name of covariate cov.file, default=NULL  
         **method** : {SKAT, SKAT-O, Burden}. default='SKAT'  
         **Is.binary** : Check if phenotype is binary or not  
-        **genefunc** : Gene variables to be used for the SKAT test 
+        **genefunc** : Gene variables to be used for the SKAT test   
                  gene_varlist = { downstream, exonic, exonic;splicing, intergenic, intronic, ncRNA_exonic, ncRNA_exonic;splicing, 
                                   ncRNA_intronic, ncRNA_splicing, ncRNA_UTR5, splicing, upstream, upstream;downstream, UTR3, 
                                   UTR5, UTR5;UTR3 }   
-        **exonicfunc** : Exonic variables to be used for the SKAT test 
+        **exonicfunc** : Exonic variables to be used for the SKAT test   
                exonic_varlist = { frameshift deletion, frameshift insertion, nonframeshift deletion, nonframeshift insertion, 
                                   nonsynonymous SNV, startloss, stopgain, stoploss, synonymous SNV }  
         **number** : The number of genes to be used for each time. if n=1000, analyze 1000 genes at a time. default = 1000  
