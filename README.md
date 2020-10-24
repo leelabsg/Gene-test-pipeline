@@ -2,12 +2,14 @@ This library provides a brief use of annovar and a description of the function o
 (Wu, M., Lee, S., Cai, T., Li, Y., Boehnke, M. and Lin, X. (2011). Rare Variant Association Testing for Sequencing Data Using the Sequence Kernel Association Test (SKAT). AJHG, 89, 82-93.  
 SKAT R - package : <https://github.com/leeshawn/SKAT>)
 
-
+-------------------------------------------
 # ANNOVAR
 ANNOVAR (ANNOtate VARiation) is a bioinformatics software tool for the interpretation and prioritization of single nucleotide variants (SNVs), insertions, deletions, and copy number variants (CNVs) of a given genome. It has the ability to annotate human genomes hg18, hg19, hg38.
 
 -----------------------
+
 ![annovar](https://user-images.githubusercontent.com/73377376/97069199-74801580-1609-11eb-8775-0b07cadf878d.png)
+
 -----------------------
 
 ### Example of basic workflow
@@ -53,6 +55,7 @@ SKAT_gene_SSD.R
         (sometimes chromosome name may be inconsistent, so conversion was performed)  
         
         *Input = (Annovar result multianno.txt file, Name to save after converting)*  
+        
         <pre>
         <code>
         Read_Annovar('example.hg38_multianno.txt', 'converted_multianno.txt')
@@ -83,12 +86,12 @@ SKAT_gene_SSD.R
         **method** : {SKAT, SKAT-O, Burden}. default='SKAT'  
         **Is.binary** : Check if phenotype is binary or not  
         **genefunc** : Gene variables to be used for the SKAT test   
-             >    gene_varlist = { downstream, exonic, exonic;splicing, intergenic, intronic, ncRNA_exonic, ncRNA_exonic;splicing, 
+                * gene_varlist = { downstream, exonic, exonic;splicing, intergenic, intronic, ncRNA_exonic, ncRNA_exonic;splicing, 
                                   ncRNA_intronic, ncRNA_splicing, ncRNA_UTR5, splicing, upstream, upstream;downstream, UTR3, 
                                   UTR5, UTR5;UTR3 }   
         **exonicfunc** : Exonic variables to be used for the SKAT test   
-             >  exonic_varlist = { frameshift deletion, frameshift insertion, nonframeshift deletion, nonframeshift insertion, 
-                                  nonsynonymous SNV, startloss, stopgain, stoploss, synonymous SNV }  
+                * exonic_varlist = { frameshift deletion, frameshift insertion, nonframeshift deletion, nonframeshift insertion, 
+                                     nonsynonymous SNV, startloss, stopgain, stoploss, synonymous SNV }  
         **number** : The number of genes to be used for each time. if n=1000, analyze 1000 genes at a time. default = 1000  
         **leaveSSD** : If leaveSSD=F, save the results separately for each number. default=F  
         **plinkver** : plink version. default=2 (plink2)  
