@@ -30,7 +30,7 @@ Read_Annovar<-function(anno,result){
 
 ##Var_Info function
 
-Var_Info<-function(anno,result,order=T){ # order = loss of funcion 많은 순서정렬
+Var_Info<-function(anno,result,order=T){
     
     #get list of genes and prepare empty dataset
     genelist<-unique(anno$Gene.refGene)
@@ -69,8 +69,7 @@ Var_Info<-function(anno,result,order=T){ # order = loss of funcion 많은 순서
 
 ##SKAT_gene_SSD function
 SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKAT',Is.binary,genefunc=c(),exonicfunc=c(),number=1000,leaveSSD=F,plinkver=2){
-                                                                                                            #  number한번에 유전자 몇개 검색
-                                                                                                            # SSD number마다 따로 저장
+                                                                                                 
     #making fam_cov file 
     #object for continuous phenotype
     if(!Is.binary){
@@ -106,7 +105,7 @@ SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKAT',Is.bina
             }
     } 
   
-    #change the name of the snps ID to prevent duplication (4가지 col로 조합해서 새로 이름만들어 주기)
+    #change the name of the snps ID to prevent duplication
     command<-paste0(' --bfile ',bfile, ' --set-all-var-ids @:#:\\$r:\\$a --new-id-max-allele-len 300 --make-bed --out changed_',bfile)
     if(plinkver==1){
         system2('./plink',command,wait=T)
@@ -448,7 +447,7 @@ SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKAT',Is.bina
 }
 
 
-#Oneset_genotype_SSD   # gene찾아서 저장해주기 # 9null, 0일치, 1,2 reference와 다른 것
+#Oneset_genotype_SSD
 Oneset_Genotype_SSD<-function(gene,anno,bfile,number){
 #gene you want, annovar file made by Read_Annovar, plink filename, initial number of genes in each setIDfile
     anno<-fread(anno,fill=T)
