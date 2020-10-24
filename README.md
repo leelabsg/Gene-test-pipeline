@@ -69,7 +69,7 @@ SKAT_gene_SSD.R
         
         *Input = (Annovar result converted.txt, Name to save after converting, Order=T)*  
         
-        * **Order=T** : Generate loss of function column by adding five variants(frameshift deletion, frameshift insertion, 
+        * **Order=T** : Generate loss of function column by adding the results of five variants(frameshift deletion, frameshift insertion, 
             startloss, stopgain, stoploss) and sort them in descending order
         
         <pre>
