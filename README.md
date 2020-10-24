@@ -14,7 +14,8 @@ ANNOVAR (ANNOtate VARiation) is a bioinformatics software tool for the interpret
 
 1. Download annotation database
 
-    Here we can see the available databases : <http://annovar.openbioinformatics.org/en/latest/user-guide/download/>
+    Here we can see the available databases : <http://annovar.openbioinformatics.org/en/latest/user-guide/download/>  
+    You can download the reference genome database that suits your study (Ex. hg19(GRCh37), hg38(GRCh38) .. )
 
    * download hg38 database
 <pre>
@@ -81,6 +82,8 @@ SKAT_gene_SSD.R
         
   * SKAT_gene_SSD function
       * Gene-wise SKAT (Security Kernel Association Test) analysis to confirm the significance of genes
+        Before executing this function, you must convert your vcf file used in annoar software into bfile (bed, bim, fam) via plink.  
+        For example, "plink --vcf [VCF_FILENAME].vcf --make-bed --out [BFILE_NAME]"
       
         *Input = (Annovar result converted.txt, bfile(bed, bim, fam) name, Name to save after processing, cov=NULL, method='SKAT', Is.binary, genefunc=c(), exonicfunc=c(), number=1000, leaveSSD=F, plinkver=2)*    
         
@@ -95,6 +98,7 @@ SKAT_gene_SSD.R
                 { frameshift deletion, frameshift insertion, nonframeshift deletion, nonframeshift insertion, nonsynonymous SNV, startloss, stopgain, stoploss, synonymous SNV }  
         * **number** : The number of genes to be used for each time. if n=1000, analyze 1000 genes at a time. default = 1000  
         * **leaveSSD** : If leaveSSD=F, save the results separately for each number. default=F  
+                         To use the Oneset_genotype_SSD function below, you need to set leaveSSD=T
         * **plinkver** : plink version. default=2 (plink2)  
         
         <pre>
@@ -105,7 +109,8 @@ SKAT_gene_SSD.R
         </pre>  
                   
   * Oneset_genotype_SSD function
-      * Enter the gene you want, and save the comparison results with the reference database
+      * Enter the gene you want, and save the comparison results with the reference database  
+        This function can be used only when the levelSSD=T of SKAT_gene_SSD function.
           
         *Input = (gene name, Annovar result converted.txt, bfile(bed, bim, fam) name, number used in SKAT function)*
 
