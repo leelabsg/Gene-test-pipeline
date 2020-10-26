@@ -52,6 +52,8 @@ The following analysis can be carried out using the above multianno.txt file.
 # Gene based analysis using SKAT
 
 SKAT_gene_SSD.R
+    The libraries used : SKAT, data.table, tibble, dplyr
+    
   * Read_Annovar function  
       * Converting chromosome name from chr1-22, chrX-Y to 1-22, X-Y and read the annotation result as table  
         (sometimes chromosome name may be inconsistent, so conversion was performed)  
