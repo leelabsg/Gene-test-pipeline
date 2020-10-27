@@ -1,5 +1,5 @@
 ##SKAT_gene_SSD function
-SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKAT',Is.binary,genefunc=c(),exonicfunc=c(),number=1000,leaveSSD=F,plinkver=2){
+SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKAT',weights.beta=c(1,25),weights=NULL,Is.binary,genefunc=c(),exonicfunc=c(),number=1000,leaveSSD=F,plinkver=2){
   #making fam_cov file 
   #object for continuous phenotype
   if(!Is.binary){
@@ -109,10 +109,10 @@ SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKAT',Is.bina
           Generate_SSD_SetID(File.Bed,File.Bim,File.Fam,File.SetID,File.SSD,File.Info)
           SSD.Info<-Open_SSD(File.SSD,File.Info)
           if (k==1){
-            result_table<-SKATBinary.SSD.All(SSD.Info,obj,method=method)         
+            result_table<-SKATBinary.SSD.All(SSD.Info,obj,method=method, weights.beta=weights.beta,weights=weights)         
             result_table<-data.frame(result_table$results)
           }else{
-            result<-SKATBinary.SSD.All(SSD.Info,obj,method=method)
+            result<-SKATBinary.SSD.All(SSD.Info,obj,method=method,weights.beta=weights.beta,weights=weights)
             result<-data.frame(result$results)
             result_table<-rbind(result_table,result)
           }
@@ -124,10 +124,10 @@ SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKAT',Is.bina
           Generate_SSD_SetID(File.Bed,File.Bim,File.Fam,File.SetID,File.SSD,File.Info)
           SSD.Info<-Open_SSD(File.SSD,File.Info)
           if (k==1){
-            result_table<-SKATBinary.SSD.All(SSD.Info,obj,method=method)         
+            result_table<-SKATBinary.SSD.All(SSD.Info,obj,method=method,weights.beta=weights.beta,weights=weights)         
             result_table<-data.frame(result_table$results)
           }else{
-            result<-SKATBinary.SSD.All(SSD.Info,obj,method=method)
+            result<-SKATBinary.SSD.All(SSD.Info,obj,method=method,weights.beta=weights.beta,weights=weights)
             result<-data.frame(result$results)
             result_table<-rbind(result_table,result)
           }
@@ -185,7 +185,7 @@ SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKAT',Is.bina
         Generate_SSD_SetID(File.Bed,File.Bim,File.Fam,File.SetID,File.SSD,File.Info)
         SSD.Info<-Open_SSD(File.SSD,File.Info)
         
-        result<-SKATBinary.SSD.All(SSD.Info,obj,method=method)
+        result<-SKATBinary.SSD.All(SSD.Info,obj,method=method,weights.beta=weights.beta,weights=weights)
         result<-data.frame(result$results)
         result_table<-rbind(result_table,result)
       }else{
@@ -195,7 +195,7 @@ SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKAT',Is.bina
         Generate_SSD_SetID(File.Bed,File.Bim,File.Fam,File.SetID,File.SSD,File.Info)
         SSD.Info<-Open_SSD(File.SSD,File.Info)
         
-        result<-SKATBinary.SSD.All(SSD.Info,obj,method=method)
+        result<-SKATBinary.SSD.All(SSD.Info,obj,method=method,weights.beta=weights.beta,weights=weights)
         result<-data.frame(result$results)
         result_table<-rbind(result_table,result)
       }
@@ -270,10 +270,10 @@ SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKAT',Is.bina
           SSD.Info<-Open_SSD(File.SSD,File.Info)
           
           if (k==1){
-            result_table<-SKAT.SSD.All(SSD.Info,obj,method=method)         
+            result_table<-SKAT.SSD.All(SSD.Info,obj,method=method,weights.beta=weights.beta,weights=weights)         
             result_table<-data.frame(result_table$results)
           }else{
-            result<-SKAT.SSD.All(SSD.Info,obj,method=method)
+            result<-SKAT.SSD.All(SSD.Info,obj,method=method,weights.beta=weights.beta,weights=weights)
             result<-data.frame(result$results)
             result_table<-rbind(result_table,result)
           }
@@ -285,10 +285,10 @@ SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKAT',Is.bina
           SSD.Info<-Open_SSD(File.SSD,File.Info)
           
           if(k==1){
-            result_table<-SKAT.SSD.All(SSD.Info,obj,method=method)         
+            result_table<-SKAT.SSD.All(SSD.Info,obj,method=method,weights.beta=weights.beta,weights=weights)         
             result_table<-data.frame(result_table$results)
           }else{
-            result<-SKAT.SSD.All(SSD.Info,obj,method=method)
+            result<-SKAT.SSD.All(SSD.Info,obj,method=method,weights.beta=weights.beta,weights=weights)
             result<-data.frame(result$results)
             result_table<-rbind(result_table,result)
           }
@@ -347,7 +347,7 @@ SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKAT',Is.bina
         Generate_SSD_SetID(File.Bed,File.Bim,File.Fam,File.SetID,File.SSD,File.Info)
         SSD.Info<-Open_SSD(File.SSD,File.Info)
         
-        result<-SKATBinary.SSD.All(SSD.Info,obj,method=method)
+        result<-SKAT.SSD.All(SSD.Info,obj,method=method,weights.beta=weights.beta,weights=weights)
         result<-data.frame(result$results)
         result_table<-rbind(result_table,result)
       }else{
@@ -357,7 +357,7 @@ SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKAT',Is.bina
         Generate_SSD_SetID(File.Bed,File.Bim,File.Fam,File.SetID,File.SSD,File.Info)
         SSD.Info<-Open_SSD(File.SSD,File.Info)
         
-        result<-SKATBinary.SSD.All(SSD.Info,obj,method=method)
+        result<-SKAT.SSD.All(SSD.Info,obj,method=method,weights.beta=weights.beta,weights=weights)
         result<-data.frame(result$results)
         result_table<-rbind(result_table,result)
         
