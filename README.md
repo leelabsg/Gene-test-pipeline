@@ -137,7 +137,7 @@ SKAT_gene_SSD.R
         <pre>
         <code>
         SKAT_gene_SSD_specific('SNUH_converted_multianno.txt','SNUH', gene=c('HLA-DRB1', 'HLA-DRB5', 'HLA-B'), 'SNUH_result.txt', cov=NULL, method='SKAT',  
-                                weights.beta=c(1,25), weights=NUL, Is.binary=T, genefunc=c('exonic','splicing','exonic.splicing'),exonicfunc=c('nonsynonymous SNV'), n=1000)
+                                weights.beta=c(1,25), weights=NULL, Is.binary=T, genefunc=c('exonic','splicing','exonic.splicing'),exonicfunc=c('nonsynonymous SNV'), n=1000)
         </code>
         </pre>  
               
