@@ -115,8 +115,8 @@ The following analysis can be carried out using the multianno.txt file above.
         </pre>  
                   
   * Oneset_genotype_SSD function
-      * Enter the gene you want, and save the comparison results with the reference database  
-        This function can be used only when the levelSSD=T of SKAT_gene_SSD function.
+      * Print the genotype matrix of the relevant gene.  
+        This function can be used only when the leaveSSD=T of SKAT_gene_SSD function.
           
         *Input = (gene name, Annovar result converted.txt, bfile(bed, bim, fam) name, number used in SKAT function)*
         
