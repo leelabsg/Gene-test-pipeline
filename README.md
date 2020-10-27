@@ -53,6 +53,7 @@ The following analysis can be carried out using the multianno.txt file above.
 
 SKAT_gene_SSD.R  
     The libraries used : SKAT, data.table, tibble, dplyr  
+    **Before executing this function, place the plink or plink2 file on the current directory**  
     
   * Read_Annovar function  
       * Converting the chromosome name from chr1-22, chrX-Y to 1-22, X-Y and read the annotation result as a table  
