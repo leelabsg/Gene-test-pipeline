@@ -51,7 +51,8 @@ The following analysis can be carried out using the multianno.txt file above.
 
 # Gene based analysis using SKAT
 
-SKAT_gene_SSD.R  
+### SKAT_gene_SSD_All_functions.R
+
     The libraries used : SKAT, data.table, tibble, dplyr  
     **Before executing this function, place the plink or plink2 file on the current directory**  
     
