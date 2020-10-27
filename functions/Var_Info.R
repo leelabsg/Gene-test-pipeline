@@ -22,14 +22,11 @@ Var_Info<-function(anno,result,order=T){
   varinfo_table<-tibble::rownames_to_column(varinfo_table,'gene')
   varinfo_table<-left_join(df,varinfo_table,by='gene')
   varinfo_table<-varinfo_table[2:nrow(varinfo_table),]
-  write.table(varinfo_table, file=result,col.names=T,row.names=T)
   
-  if(order){
-    varinfo_table$Lossoffunction<-varinfo_table$`frameshift deletion`+varinfo_table$`frameshift insertion`
+  varinfo_table$Lossoffunction<-varinfo_table$`frameshift deletion`+varinfo_table$`frameshift insertion`
     +varinfo_table$startloss+varinfo_table$stopgain+varinfo_table$stoploss
-    varinfo_table_order<-varinfo_table[order(varinfo_table$Lossoffunction,decreasing = T),]
-    write.table(varinfo_table_order, file=paste0(result,'_order'),col.names=T,row.names=T)
-  }
+   
+  write.table(varinfo_table, file=result,col.names=T,row.names=T)
   rm(varinfo_table)
   rm(varinfo_table_a)
   rm(varinfo_table_b) 
