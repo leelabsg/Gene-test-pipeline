@@ -38,8 +38,14 @@ SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKAT',weights
   #change the name of the snps ID to prevent duplication
   command<-paste0(' --bfile ',bfile, ' --set-all-var-ids @:#:\\$r:\\$a --new-id-max-allele-len 300 --make-bed --out changed_',bfile)
   if(plinkver==1){
+    if(sum(mapply(is.element, 'plink', list.files('./', 'plink', recursive=TRUE, full.names=FALSE)[1])) < 1){
+    tryCatch(stop("The plink file is not in the current directory")})
+  }
     system2('./plink',command,wait=T)
   }else{
+    if(sum(mapply(is.element, 'plink2', list.files('./', 'plink2', recursive=TRUE, full.names=FALSE)[1])) < 1){
+    tryCatch(stop("The plink2 file is not in the current directory")})
+  }
     system2('./plink2',command,wait=T)
   }
   anno<-fread(anno,fill=T)
