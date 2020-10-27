@@ -57,7 +57,9 @@ SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKAT',weights
     quotient<-floor(length(genelist)/number)
     
     for (k in 1:quotient){
-      
+      if(quotient==0){
+        break
+      }
       #make SetID and snps list file for the first 1000 genes
       SetID<-data.frame('GENE'=NA,'SNP'=NA)
       snps_selected<-data.frame('SNP'=NA)
@@ -193,7 +195,11 @@ SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKAT',weights
         
         result<-SKATBinary.SSD.All(SSD.Info,obj,method=method,weights.beta=weights.beta,weights=weights)
         result<-data.frame(result$results)
-        result_table<-rbind(result_table,result)
+        if(quotient!=0){
+          result_table<-rbind(result_table,result)
+        }else{
+          result_table<-result
+        }
       }else{
         File.SetID<-paste0('selected_last',bfile,'.SetID')
         File.SSD<-paste0('selected_last',bfile,'.SSD')
@@ -203,7 +209,11 @@ SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKAT',weights
         
         result<-SKATBinary.SSD.All(SSD.Info,obj,method=method,weights.beta=weights.beta,weights=weights)
         result<-data.frame(result$results)
-        result_table<-rbind(result_table,result)
+        if(quotient!=0){
+          result_table<-rbind(result_table,result)
+        }else{
+          result_table<-result
+        }
       }
       Close_SSD()
       
@@ -217,6 +227,9 @@ SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKAT',weights
     
     for (k in 1:quotient){
       
+      if(quotient==0){
+        break
+      }
       #make SetID and snps list file for the first 1000 genes
       SetID<-data.frame('GENE'=NA,'SNP'=NA)
       snps_selected<-data.frame('SNP'=NA)
@@ -355,7 +368,11 @@ SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKAT',weights
         
         result<-SKAT.SSD.All(SSD.Info,obj,method=method,weights.beta=weights.beta,weights=weights)
         result<-data.frame(result$results)
-        result_table<-rbind(result_table,result)
+        if(quotient!=0){
+          result_table<-rbind(result_table,result)
+        }else{
+          result_table<-result
+        }
       }else{
         File.SetID<-paste0('selected_last',bfile,'.SetID')
         File.SSD<-paste0('selected_last',bfile,'.SSD')
@@ -365,7 +382,11 @@ SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKAT',weights
         
         result<-SKAT.SSD.All(SSD.Info,obj,method=method,weights.beta=weights.beta,weights=weights)
         result<-data.frame(result$results)
-        result_table<-rbind(result_table,result)
+        if(quotient!=0){
+          result_table<-rbind(result_table,result)
+        }else{
+          result_table<-result
+        }
         
       }
       Close_SSD()
