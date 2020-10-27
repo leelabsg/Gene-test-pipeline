@@ -107,7 +107,7 @@ SKAT_gene_SSD.R
         
         <pre>
         <code>
-        SKAT_gene_SSD('SNUH_converted_multianno.txt','SNU','SNU_result.txt', cov=NULL, method='SKAT',Is.binary=T,
+        SKAT_gene_SSD('SNUH_converted_multianno.txt','SNUH','SNUH_result.txt', cov=NULL, method='SKAT',Is.binary=T,
                       genefunc=c('exonic','splicing','exonic.splicing'),exonicfunc=c('nonsynonymous SNV'), n=1000, leaveSSD=T)
         </code>
         </pre>  
@@ -120,7 +120,7 @@ SKAT_gene_SSD.R
 
         <pre>
         <code>
-        Oneset_Genotype_SSD('FYB2','SNUH_converted_multianno.txt','SNU',1000)
+        Oneset_Genotype_SSD('FYB2','SNUH_converted_multianno.txt','SNUH',1000)
         </code>
         </pre>  
         
