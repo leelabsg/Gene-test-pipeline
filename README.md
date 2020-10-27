@@ -106,6 +106,7 @@ The following analysis can be carried out using the multianno.txt file above.
                            To use the Oneset_genotype_SSD function below, you need to set leaveSSD=T
         * **plinkver** : plink version. default=2 (plink2)  
         
+        
         <pre>
         <code>
         SKAT_gene_SSD('SNUH_converted_multianno.txt','SNUH','SNUH_result.txt', cov=NULL, method='SKAT',Is.binary=T,
@@ -118,6 +119,7 @@ The following analysis can be carried out using the multianno.txt file above.
         This function can be used only when the levelSSD=T of SKAT_gene_SSD function.
           
         *Input = (gene name, Annovar result converted.txt, bfile(bed, bim, fam) name, number used in SKAT function)*
+        
 
         <pre>
         <code>
@@ -135,12 +137,14 @@ The following analysis can be carried out using the multianno.txt file above.
         * **weights.beta** : The degree of weighting according to Minor Allele Frequency(MAF)
         * **weights** : Weights in SKAT function.  
         
+        
         <pre>
         <code>
         SKAT_gene_SSD_specific('SNUH_converted_multianno.txt','SNUH', gene=c('HLA-DRB1', 'HLA-DRB5', 'HLA-B'), 'SNUH_result.txt', cov=NULL, method='SKAT',  
                                 weights.beta=c(1,25), weights=NULL, Is.binary=T, genefunc=c('exonic','splicing','exonic.splicing'),exonicfunc=c('nonsynonymous SNV'), n=1000)
         </code>
         </pre>  
+              
               
 ## References
 * Lee, S., Emond, M.J., ..., and Lin, X. (2012). Optimal unified approach for rare variant association testing with application to small sample case-control whole-exome sequencing studies. AJHG, 91, 224-237.  
