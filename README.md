@@ -132,9 +132,14 @@ SKAT_gene_SSD.R
         
         * **gene** : Gene list to be used for gene group analysis 
         * **weights.beta** : The degree of weighting according to Minor Allele Frequency(MAF)
-        * weights : Weights in SKAT function.
+        * **weights** : Weights in SKAT function.  
         
-        
+        <pre>
+        <code>
+        SKAT_gene_SSD_specific('SNUH_converted_multianno.txt','SNUH', gene=c('HLA-DRB1', 'HLA-DRB5', 'HLA-B'), 'SNUH_result.txt', cov=NULL, method='SKAT', weights.beta=c(1,25), weights=NUL, Is.binary=T, genefunc=c('exonic','splicing','exonic.splicing'),exonicfunc=c('nonsynonymous SNV'), n=1000)
+        </code>
+        </pre>  
+              
 ## References
 * Lee, S., Emond, M.J., ..., and Lin, X. (2012). Optimal unified approach for rare variant association testing with application to small sample case-control whole-exome sequencing studies. AJHG, 91, 224-237.  
 * Wu, M., Lee, S., Cai, T., Li, Y., Boehnke, M. and Lin, X. (2011). Rare Variant Association Testing for Sequencing Data Using the Sequence Kernel Association Test (SKAT). AJHG, 89, 82-93.  
