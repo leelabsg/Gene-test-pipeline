@@ -475,7 +475,7 @@ write.table(result_table, file=resultfilename, col.names = T,row.names=F, quote=
 }
 
 
-
+# SKAT_gene_SSD_specific function
 SKAT_gene_SSD_specific<-function(anno,bfile,gene=c(),resultfilename,cov=NULL,method='SKAT',weights.beta=c(1,25),weights=NULL,Is.binary,genefunc=c(),exonicfunc=c(),number=1000,leaveSSD=F,plinkver=2){
   
   #making fam_cov file 
