@@ -1,7 +1,6 @@
 ##Var_Info function
-
 Var_Info<-function(anno,result,order=T){
-  
+  anno<-read.csv(anno)
   #get list of genes and prepare empty dataset
   genelist<-unique(anno$Gene.refGene)
   df=data.frame(chr=NA,gene=NA,start=NA,end=NA)
@@ -24,8 +23,8 @@ Var_Info<-function(anno,result,order=T){
   varinfo_table<-varinfo_table[2:nrow(varinfo_table),]
   
   varinfo_table$Lossoffunction<-varinfo_table$`frameshift deletion`+varinfo_table$`frameshift insertion`
-    +varinfo_table$startloss+varinfo_table$stopgain+varinfo_table$stoploss
-   
+  +varinfo_table$startloss+varinfo_table$stopgain+varinfo_table$stoploss
+  
   write.table(varinfo_table, file=result,col.names=T,row.names=T)
   rm(varinfo_table)
   rm(varinfo_table_a)
