@@ -64,7 +64,7 @@ The following analysis can be carried out using the multianno.txt file above.
         
         <pre>
         <code>
-        Read_Annovar('SNUH_annotation.hg38_multianno.txt', 'SNUH_converted_multianno.txt')
+        Read_Annovar('SNUH_annotation.hg38_multianno.txt', 'SNUH_converted_multianno.csv')
         </code>
         </pre>  
         
@@ -80,7 +80,7 @@ The following analysis can be carried out using the multianno.txt file above.
         
         <pre>
         <code>
-        Var_Info('SNUH_converted_multianno.txt', 'SNUH_var_info.txt')
+        Var_Info('SNUH_converted_multianno.csv', 'SNUH_var_info.txt')
         </code>
         </pre>  
 
@@ -109,7 +109,7 @@ The following analysis can be carried out using the multianno.txt file above.
         
         <pre>
         <code>
-        SKAT_gene_SSD('SNUH_converted_multianno.txt','SNUH','SNUH_result.txt', cov=NULL, method='SKAT',Is.binary=T,
+        SKAT_gene_SSD('SNUH_converted_multianno.csv','SNUH','SNUH_result.txt', cov=NULL, method='SKAT',Is.binary=T,
                       genefunc=c('exonic','splicing','exonic.splicing'),exonicfunc=c('nonsynonymous SNV'), n=1000, leaveSSD=T)
         </code>
         </pre>  
@@ -123,7 +123,7 @@ The following analysis can be carried out using the multianno.txt file above.
 
         <pre>
         <code>
-        Oneset_Genotype_SSD('FYB2','SNUH_converted_multianno.txt','SNUH',1000)
+        Oneset_Genotype_SSD('FYB2','SNUH_converted_multianno.csv','SNUH',1000)
         </code>
         </pre>  
  
@@ -140,7 +140,7 @@ The following analysis can be carried out using the multianno.txt file above.
         
         <pre>
         <code>
-        SKAT_gene_SSD_specific('SNUH_converted_multianno.txt','SNUH', gene=c('HLA-DRB1', 'HLA-DRB5', 'HLA-B'), 'SNUH_result.txt', cov=NULL, method='SKAT',  
+        SKAT_gene_SSD_specific('SNUH_converted_multianno.csv','SNUH', gene=c('HLA-DRB1', 'HLA-DRB5', 'HLA-B'), 'SNUH_result.txt', cov=NULL, method='SKAT',  
                                 weights.beta=c(1,25), weights=NULL, Is.binary=T, genefunc=c('exonic','splicing','exonic.splicing'),exonicfunc=c('nonsynonymous SNV'), n=1000)
         </code>
         </pre>  
