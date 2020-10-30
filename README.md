@@ -93,7 +93,7 @@ The following analysis can be carried out using the multianno.txt file above.
         *Input = (Annovar result converted.txt, bfile(bed, bim, fam) name, Name to save after processing, cov=NULL, method='SKAT', Is.binary, genefunc=c(), exonicfunc=c(), number=1000, leaveSSD=F, plinkver=2)*    
         
         * **cov** : Name of covariate cov.file, default=NULL  
-        * **method** : {SKAT, SKAT-O, Burden}. default='SKAT'   
+        * **method** : {SKAT, SKAT-O, Burden}. default='SKAT-O'   
         * **Is.binary** : Check if phenotype is binary or not  
         * **genefunc** : Gene variables to be used for the SKAT test   
             * gene_varlist = 
