@@ -153,14 +153,14 @@ The following analysis can be carried out using the multianno.txt file above.
               
 # Code examples of SNUH
    * Files and parameters  
-        environment = Execution of R codes under linux environment  
-        multianno file = SNUH_annotation.hg38_multianno.txt  
-        bfile name = SNUH (SNUH.bed, SNUH.bim, SNUH.fam)  
-        covar = NULL  
-        plink version = plink2  
-        method = SKAT-O  
-        gene functions = c('exonic', 'exonic;splicing', 'ncRNA_exonic;splicing' , 'ncRNA_splicing' , 'splicing')  
-        exonic functions = c('frameshift deletion', 'frameshift insertion', 'nonframeshift deletion', 'nonframeshift insertion',  
+        **environment** = Execution of R codes under linux environment  
+        **multianno file** = SNUH_annotation.hg38_multianno.txt  
+        **bfile name** = SNUH (SNUH.bed, SNUH.bim, SNUH.fam)  
+        **covar** = NULL  
+        **plink version** = plink2  
+        **method** = SKAT-O  
+        **gene functions** = c('exonic', 'exonic;splicing', 'ncRNA_exonic;splicing' , 'ncRNA_splicing' , 'splicing')  
+        **exonic functions** = c('frameshift deletion', 'frameshift insertion', 'nonframeshift deletion', 'nonframeshift insertion',  
                            'nonsynonymous SNV', 'startloss', 'stopgain', 'stoploss')  
                              
                              
