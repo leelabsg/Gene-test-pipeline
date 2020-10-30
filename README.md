@@ -90,7 +90,7 @@ The following analysis can be carried out using the multianno.txt file above.
         Before executing this function, you must convert your vcf file used in the annoar software into a bfile (bed, bim, fam) via plink.  
         For example, "plink --vcf [VCF_FILENAME].vcf --make-bed --out [BFILE_NAME]"
       
-        *Input = (Annovar result converted.txt, bfile(bed, bim, fam) name, Name to save after processing, cov=NULL, method='SKAT', Is.binary, genefunc=c(), exonicfunc=c(), number=1000, leaveSSD=F, plinkver=2)*    
+        *Input = (Annovar result converted.txt, bfile(bed, bim, fam) name, Name to save after processing, cov=NULL, method='SKAT-O', Is.binary, genefunc=c(), exonicfunc=c(), number=1000, leaveSSD=F, plinkver=2)*    
         
         * **cov** : Name of covariate cov.file, default=NULL  
         * **method** : {SKAT, SKAT-O, Burden}. default='SKAT-O'   
@@ -109,7 +109,7 @@ The following analysis can be carried out using the multianno.txt file above.
         
         <pre>
         <code>
-        SKAT_gene_SSD('SNUH_converted_multianno.csv','SNUH','SNUH_result.txt', cov=NULL, method='SKAT',Is.binary=T,
+        SKAT_gene_SSD('SNUH_converted_multianno.csv','SNUH','SNUH_result.txt', cov=NULL, method='SKAT-O',Is.binary=T,
                       genefunc=c('exonic','splicing','exonic.splicing'),exonicfunc=c('nonsynonymous SNV'), n=1000, leaveSSD=T)
         </code>
         </pre>  
