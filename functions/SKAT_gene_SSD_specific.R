@@ -35,11 +35,11 @@ SKAT_gene_SSD_specific<-function(anno,bfile,gene=c(),resultfilename,cov=NULL,met
     }
   } 
   
-  #change the name of the snps ID to prevent duplication
+ #change the name of the snps ID to prevent duplication
   command2<-paste0(' --bfile ',bfile, ' --set-all-var-ids @:#:\\$r:\\$a --new-id-max-allele-len 300 --make-bed --out changed_',bfile)
   if(plinkver==1){
-    if(sum(mapply(is.element, 'plink', list.files('./', 'plink', recursive=TRUE, full.names=FALSE)[1])) < 1){
-    tryCatch(stop("The plink file is not in the current directory")})
+    if(!file.exists('./plink')){
+    tryCatch(stop("The plink file is not in the current directory"))
   }
     bim<-read.table(paste0(bfile,'.bim'))
     bim$V2<-paste0(as.character(bim$V1),':',as.character(bim$V4),':',as.character(bim$V6),':',as.character(bim$V5))
@@ -48,8 +48,8 @@ SKAT_gene_SSD_specific<-function(anno,bfile,gene=c(),resultfilename,cov=NULL,met
 
     system2('./plink',command,wait=T)
   }else{
-    if(sum(mapply(is.element, 'plink2', list.files('./', 'plink2', recursive=TRUE, full.names=FALSE)[1])) < 1){
-    tryCatch(stop("The plink file is not in the current directory")})
+    if(!file.exists('./plink2')){
+    tryCatch(stop("The plink2 file is not in the current directory"))
   }
     system2('./plink2',command2,wait=T)
   }
