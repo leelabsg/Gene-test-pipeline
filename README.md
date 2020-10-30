@@ -127,7 +127,7 @@ The following analysis can be carried out using the multianno.txt file above.
         </code>
         </pre>  
  
-  * SKAT_gene_SSD_specific.R  
+  * SKAT_gene_SSD_specific function
       * This function is a modified version of the existing SKAT_gene_SSD function.  
         With the gene=c() parameter, a specific gene list can be inserted into the input to conduct group analysis only for these genes.  
     
