@@ -55,6 +55,8 @@ The following analysis can be carried out using the multianno.txt file above.
 
    The libraries used : SKAT, data.table, tibble, dplyr  
    **Before executing this function, place the plink or plink2 file on the current directory**  
+   
+   
     
   * Read_Annovar function  
       * Converting the chromosome name from chr1-22, chrX-Y to 1-22, X-Y and read the annotation result as a csv  
@@ -90,18 +92,21 @@ The following analysis can be carried out using the multianno.txt file above.
         Before executing this function, you must convert your vcf file used in the annoar software into a bfile (bed, bim, fam) via plink.  
         For example, "plink --vcf [VCF_FILENAME].vcf --make-bed --out [BFILE_NAME]"
       
-        *Input = (Annovar result converted.txt, bfile(bed, bim, fam) name, Name to save after processing, cov=NULL, method='SKAT-O', Is.binary, genefunc=c(), exonicfunc=c(), number=1000, leaveSSD=F, plinkver=2)*    
+        *Input = (Annovar result converted.txt, bfile(bed, bim, fam) name, Name to save after processing, cov=NULL, method='SKAT-O', weights.beta=c(1,25), weights=NULL,  
+                  Is.binary, genefunc=c(), exonicfunc=c(), number=1000, leaveSSD=F, plinkver=2)*    
         
         * **cov** : Name of covariate cov.file, default=NULL  
         * **method** : {SKAT, SKAT-O, Burden}. default='SKAT-O'   
+        * **weights.beta** : The degree of weighting according to Minor Allele Frequency(MAF)  
+        * **weights** : Weights in SKAT function.  
         * **Is.binary** : Check if phenotype is binary or not  
         * **genefunc** : Gene variables to be used for the SKAT test   
             * gene_varlist = 
-                { downstream, exonic, exonic;splicing, intergenic, intronic, ncRNA_exonic, ncRNA_exonic;splicing, ncRNA_intronic, ncRNA_splicing, ncRNA_UTR5, splicing, upstream, upstream;downstream, UTR3, UTR5, UTR5;UTR3 }   
+                { downstream, exonic, exonic;splicing, intergenic, intronic, ncRNA_exonic, ncRNA_exonic;splicing, ncRNA_intronic, ncRNA_splicing, ncRNA_UTR5, splicing, upstream,                   upstream;downstream, UTR3, UTR5, UTR5;UTR3 }   
         * **exonicfunc** : Exonic variables to be used for the SKAT test   
             * exonic_varlist = 
-                { frameshift deletion, frameshift insertion, nonframeshift deletion, nonframeshift insertion, nonsynonymous SNV, startloss, stopgain, stoploss, synonymous SNV }  
-        * **number** : The number of genes to be used for each time. If n=1000, analyze 1000 genes at a time. Default = 1000  
+                { frameshift deletion, frameshift insertion, nonframeshift deletion, nonframeshift insertion, nonsynonymous SNV, startloss, stopgain, stoploss, synonymous SNV } 
+        * **number** : The number of genes to be used for each time. If n=1000, analyze 1000 genes at a time(Setting for computation). Default = 1000  
         * **leaveSSD** : If leaveSSD=F, save the results separately for each number. default=F  
                            To use the Oneset_genotype_SSD function below, you need to set leaveSSD=T
         * **plinkver** : plink version. default=2 (plink2)  
@@ -109,8 +114,8 @@ The following analysis can be carried out using the multianno.txt file above.
         
         <pre>
         <code>
-        SKAT_gene_SSD('SNUH_converted_multianno.csv','SNUH','SNUH_result.txt', cov=NULL, method='SKAT-O',Is.binary=T,
-                      genefunc=c('exonic','splicing','exonic.splicing'),exonicfunc=c('nonsynonymous SNV'), n=1000, leaveSSD=T)
+        SKAT_gene_SSD('SNUH_converted_multianno.csv','SNUH','SNUH_result.txt', cov=NULL, method='SKAT-O', weights.beta=c(1,25),  
+                       weights=NULL, Is.binary=T, genefunc=c('exonic','splicing','exonic.splicing'),exonicfunc=c('nonsynonymous SNV'), n=1000, leaveSSD=T)
         </code>
         </pre>  
                   
@@ -120,7 +125,6 @@ The following analysis can be carried out using the multianno.txt file above.
           
         *Input = (gene name, Annovar result converted.txt, bfile(bed, bim, fam) name, number used in SKAT function)*
         
-
         <pre>
         <code>
         Oneset_Genotype_SSD('FYB2','SNUH_converted_multianno.csv','SNUH',1000)
@@ -131,7 +135,8 @@ The following analysis can be carried out using the multianno.txt file above.
       * This function is a modified version of the existing SKAT_gene_SSD function.  
         With the gene=c() parameter, a specific gene list can be inserted into the input to conduct group analysis only for these genes.  
     
-        *Input = (Annovar result converted.txt, bfile(bed, bim, fam) name, **gene=c()**, Name to save after processing, cov=NULL, method='SKAT', weights.beta=c(1,25), weights=NULL, Is.binary, genefunc=c(), exonicfunc=c(), number=1000, leaveSSD=F, plinkver=2)*        
+        *Input = (Annovar result converted.txt, bfile(bed, bim, fam) name, **gene=c()**, Name to save after processing, cov=NULL, method='SKAT', weights.beta=c(1,25),  
+                  weights=NULL, Is.binary, genefunc=c(), exonicfunc=c(), number=1000, leaveSSD=F, plinkver=2)*        
         
         * **gene** : Gene list to be used for gene group analysis 
         * **weights.beta** : The degree of weighting according to Minor Allele Frequency(MAF)
@@ -140,12 +145,37 @@ The following analysis can be carried out using the multianno.txt file above.
         
         <pre>
         <code>
-        SKAT_gene_SSD_specific('SNUH_converted_multianno.csv','SNUH', gene=c('HLA-DRB1', 'HLA-DRB5', 'HLA-B'), 'SNUH_result.txt', cov=NULL, method='SKAT',  
+        SKAT_gene_SSD_specific('SNUH_converted_multianno.csv','SNUH', gene=c('HLA-DRB1', 'HLA-DRB5', 'HLA-B'), 'SNUH_result.txt', cov=NULL, method='SKAT-O',  
                                 weights.beta=c(1,25), weights=NULL, Is.binary=T, genefunc=c('exonic','splicing','exonic.splicing'),exonicfunc=c('nonsynonymous SNV'), n=1000)
         </code>
         </pre>  
               
               
+# Code examples of SNUH
+    * Files and parameters  
+        environment = Execution of R codes under linux environment  
+        multianno file = SNUH_annotation.hg38_multianno.txt  
+        bfile name = SNUH (SNUH.bed, SNUH.bim, SNUH.fam)  
+        covar = NULL  
+        plink version = plink2  
+        method = SKAT-O  
+        
+        <pre>
+        <code>
+        # Read_Annovar funciton  
+        Read_Annovar('SNUH_annotation.hg38_multianno.txt','SNUH_converted_multianno.csv') # Then, we will get the converted csv file  
+        
+        # SKAT_gene_SSD function  
+        SKAT_gene_SSD('SNUH_converted_multianno.csv','SNUH','SNUH_example_result.txt',method='SKATO',weights.beta=c(1,25),Is.binary=T,  
+                       genefunc=c('exonic', 'exonic;splicing', 'ncRNA_exonic;splicing' , 'ncRNA_splicing' , 'splicing'),  
+                       exonicfunc=c('frameshift deletion', 'frameshift insertion', 'nonframeshift deletion', 'nonframeshift insertion',  
+                       'nonsynonymous SNV', 'startloss', 'stopgain', 'stoploss'),leaveSSD=F)  
+        # We can check the results using the SNUH_example_result.txt file generated from this function.  
+        </code>
+        </pre>  
+
+
+          
 ## References
 * Lee, S., Emond, M.J., ..., and Lin, X. (2012). Optimal unified approach for rare variant association testing with application to small sample case-control whole-exome sequencing studies. AJHG, 91, 224-237.  
 * Wu, M., Lee, S., Cai, T., Li, Y., Boehnke, M. and Lin, X. (2011). Rare Variant Association Testing for Sequencing Data Using the Sequence Kernel Association Test (SKAT). AJHG, 89, 82-93.  
