@@ -146,8 +146,10 @@ if(Is.binary){
         for (j in 1:length(exon_id)){
           #aggregate the info in annovar file to get the same name as changed snp name
           snp_name<-paste0(as.character(anno_gene[j,1]),':',as.character(anno_gene[j,2]),':',as.character(anno_gene[j,4]),':',as.character(anno_gene[j,5]))
-          row<-c(anno_gene[j,7],snp_name)
-          snps_selected<-rbind(snps_selected,snp_name)
+          row<-c(as.character(anno_gene[j,7]),snp_name)
+          
+	 
+	  snps_selected<-rbind(snps_selected,snp_name)
           SetID<-rbind(SetID,row)
         }
       }
@@ -226,7 +228,7 @@ if(Is.binary){
       
       for (j in 1:length(exon_id)){
         snp_name<-paste0(as.character(anno_gene[j,1]),':',as.character(anno_gene[j,2]),':',as.character(anno_gene[j,4]),':',as.character(anno_gene[j,5]))
-        row<-c(anno_gene[j,7],snp_name)
+        row<-c(as.character(nno_gene[j,7]),snp_name)
         snps_selected<-rbind(snps_selected,snp_name)
         SetID<-rbind(SetID,row)
       }
@@ -316,7 +318,7 @@ else{
         for (j in 1:length(exon_id)){
           #aggregate the info in annovar file to get the same name as changed snp name
           snp_name<-paste0(as.character(anno_gene[j,1]),':',as.character(anno_gene[j,2]),':',as.character(anno_gene[j,4]),':',as.character(anno_gene[j,5]))
-          row<-c(anno_gene[j,7],snp_name)
+          row<-c(as.character(anno_gene[j,7]),snp_name)
           snps_selected<-rbind(snps_selected,snp_name)
           SetID<-rbind(SetID,row)
         }
@@ -399,7 +401,7 @@ else{
       
       for (j in 1:length(exon_id)){
         snp_name<-paste0(as.character(anno_gene[j,1]),':',as.character(anno_gene[j,2]),':',as.character(anno_gene[j,4]),':',as.character(anno_gene[j,5]))
-        row<-c(anno_gene[j,7],snp_name)
+        row<-c(as.character(anno_gene[j,7]),snp_name)
         snps_selected<-rbind(snps_selected,snp_name)
         SetID<-rbind(SetID,row)
       }
@@ -631,7 +633,7 @@ if(Is.binary){
   for (i in c((1+quotient*number):length(genelist))){
     
     exon_id<-which(anno$Gene.refGene==genelist[i] & anno$Func.refGene %in% genefunc & (anno$ExonicFunc.refGene %in% exonicfunc | anno$ExonicFunc.refGene =='.') )
-    print(length(exon_id))
+   
     if (length(exon_id)>0){
       
       anno_gene<-anno[exon_id,1:16]
@@ -898,7 +900,7 @@ Oneset_Genotype_SSD<-function(gene,anno,bfile,number){
   genelist<-unique(anno$Gene.refGene)
   
   geneloc<-which(genelist==gene)
-  print(geneloc)
+  
   setnumber<-floor(geneloc/number)+1
   quotient<-floor(length(genelist)/number)
   if(setnumber!=quotient+1){
@@ -912,10 +914,3 @@ Oneset_Genotype_SSD<-function(gene,anno,bfile,number){
   id<-SSD.INFO$SetInfo[which(SSD.INFO$SetInfo$SetID==gene),]$SetIndex
   Get_Genotypes_SSD(SSD.INFO,id)
 }
-
-Read_Annovar('SNUH_annotation.hg38_multianno.txt','SNUH_anno.csv')
-SKAT_gene_SSD('SNUH_anno.csv','SNUH','SNUH_result_beta11.txt',method='SKAT',weights.beta=c(1,25),Is.binary=T,genefunc=c('exonic', 'exonic;splicing', 'ncRNA_exonic;splicing' , 'ncRNA_splicing' , 'splicing'),exonicfunc=c('frameshift deletion', 'frameshift insertion', 'nonframeshift deletion', 'nonframeshift insertion', 'nonsynonymous SNV', 'startloss', 'stopgain', 'stoploss'),leaveSSD=F)
-
-
-SKAT_gene_SSD('SNUH_anno.csv','SNUH','SNUH_result_beta11_SKATO.txt',method='SKATO',weights.beta=c(1,25),Is.binary=T,genefunc=c('exonic', 'exonic;splicing', 'ncRNA_exonic;splicing' , 'ncRNA_splicing' , 'splicing'),exonicfunc=c('frameshift deletion', 'frameshift insertion', 'nonframeshift deletion', 'nonframeshift insertion', 'nonsynonymous SNV', 'startloss', 'stopgain', 'stoploss'),leaveSSD=F)
-
