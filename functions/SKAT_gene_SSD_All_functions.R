@@ -524,8 +524,8 @@ SKAT_gene_SSD_specific<-function(anno,bfile,gene=c(),resultfilename,cov=NULL,met
 
     system2('./plink',command,wait=T)
   }else{
-    if(!file.exists('./plink2')){
-    tryCatch(stop("The plink file is not in the current directory"))
+    if(sum(mapply(is.element, 'plink2', list.files('./', 'plink2', recursive=TRUE, full.names=FALSE)[1])) < 1){
+    tryCatch(stop("The plink2 file is not in the current directory")})
   }
     system2('./plink2',command2,wait=T)
   }
