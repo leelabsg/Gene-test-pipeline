@@ -152,7 +152,7 @@ The following analysis can be carried out using the multianno.txt file above.
               
               
 # Code examples of SNUH
-    * Files and parameters  
+   * Files and parameters  
         environment = Execution of R codes under linux environment  
         multianno file = SNUH_annotation.hg38_multianno.txt  
         bfile name = SNUH (SNUH.bed, SNUH.bim, SNUH.fam)  
@@ -162,6 +162,7 @@ The following analysis can be carried out using the multianno.txt file above.
         
         <pre>
         <code>
+     
         # Read_Annovar funciton  
         Read_Annovar('SNUH_annotation.hg38_multianno.txt','SNUH_converted_multianno.csv') # Then, we will get the converted csv file  
         
