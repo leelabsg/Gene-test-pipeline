@@ -159,7 +159,9 @@ The following analysis can be carried out using the multianno.txt file above.
         covar = NULL  
         plink version = plink2  
         method = SKAT-O  
-        
+        gene functions = c('exonic', 'exonic;splicing', 'ncRNA_exonic;splicing' , 'ncRNA_splicing' , 'splicing')
+        exonic functions = c('frameshift deletion', 'frameshift insertion', 'nonframeshift deletion', 'nonframeshift insertion',  
+                           'nonsynonymous SNV', 'startloss', 'stopgain', 'stoploss')
         <pre>
         <code>
      
