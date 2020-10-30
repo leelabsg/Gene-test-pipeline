@@ -175,7 +175,7 @@ The following analysis can be carried out using the multianno.txt file above.
                        genefunc=c('exonic', 'exonic;splicing', 'ncRNA_exonic;splicing' , 'ncRNA_splicing' , 'splicing'),  
                        exonicfunc=c('frameshift deletion', 'frameshift insertion', 'nonframeshift deletion', 'nonframeshift insertion',  
                        'nonsynonymous SNV', 'startloss', 'stopgain', 'stoploss'),leaveSSD=F)  
-        # Then, we can check the results using the SNUH_example_result.txt file generated from SKAT_gene_SSD function.  
+        # Then, we can check the results using the SNUH_example_result.txt file generated from the SKAT_gene_SSD function.  
         </code>
         </pre>  
 
