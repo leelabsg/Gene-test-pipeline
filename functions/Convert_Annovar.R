@@ -1,7 +1,7 @@
-##Read_Annovar function
-Read_Annovar<-function(anno,result){
+##Convert_Annovar function
+Convert_Annovar<-function(anno,result){
   
-  #read the annotation result as table (only the first to 16th columns are needed)
+  #convert the annotation result as csv (only the first to 16th columns are needed)
   anno<-fread(anno)
   anno<-anno[1:16]
   
