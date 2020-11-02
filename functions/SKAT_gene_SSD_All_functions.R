@@ -228,7 +228,7 @@ if(Is.binary){
       
       for (j in 1:length(exon_id)){
         snp_name<-paste0(as.character(anno_gene[j,1]),':',as.character(anno_gene[j,2]),':',as.character(anno_gene[j,4]),':',as.character(anno_gene[j,5]))
-        row<-c(as.character(nno_gene[j,7]),snp_name)
+        row<-c(as.character(anno_gene[j,7]),snp_name)
         snps_selected<-rbind(snps_selected,snp_name)
         SetID<-rbind(SetID,row)
       }
