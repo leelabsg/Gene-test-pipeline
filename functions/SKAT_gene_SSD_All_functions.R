@@ -63,7 +63,7 @@ Var_Info<-function(anno,result,order=T){
 
 
 ##SKAT_gene_SSD function
-SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKAT',weights.beta=c(1,25),weights=NULL,Is.binary,genefunc=c(),exonicfunc=c(),number=1000,leaveSSD=F,plinkver=2){
+SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKATO',weights.beta=c(1,25),weights=NULL,Is.binary,genefunc=c(),exonicfunc=c(),number=1000,leaveSSD=F,plinkver=2){
   #making fam_cov file 
   #object for continuous phenotype
   if(!Is.binary){
@@ -476,7 +476,7 @@ write.table(result_table, file=resultfilename, col.names = T,row.names=F, quote=
 
 
 # SKAT_gene_SSD_specific function
-SKAT_gene_SSD_specific<-function(anno,bfile,gene=c(),resultfilename,cov=NULL,method='SKAT',weights.beta=c(1,25),weights=NULL,Is.binary,genefunc=c(),exonicfunc=c(),number=1000,leaveSSD=F,plinkver=2){
+SKAT_gene_SSD_specific<-function(anno,bfile,gene=c(),resultfilename,cov=NULL,method='SKATO',weights.beta=c(1,25),weights=NULL,Is.binary,genefunc=c(),exonicfunc=c(),number=1000,leaveSSD=F,plinkver=2){
   
   #making fam_cov file 
   #object for continuous phenotype
