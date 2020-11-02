@@ -58,7 +58,7 @@ The following analysis can be carried out using the multianno.txt file above.
    
    
     
-  * Read_Annovar function  
+  * Convert_Annovar function  
       * Converting the chromosome name from chr1-22, chrX-Y to 1-22, X-Y and read the annotation result as a csv  
         (the chromosome name may be inconsistent at times, so a conversion may be necessary)  
         
@@ -66,7 +66,7 @@ The following analysis can be carried out using the multianno.txt file above.
         
         <pre>
         <code>
-        Read_Annovar('SNUH_annotation.hg38_multianno.txt', 'SNUH_converted_multianno.csv')
+        Convert_Annovar('SNUH_annotation.hg38_multianno.txt', 'SNUH_converted_multianno.csv')
         </code>
         </pre>  
         
@@ -168,7 +168,7 @@ The following analysis can be carried out using the multianno.txt file above.
         <code>
      
         # Read_Annovar funciton  
-        Read_Annovar('SNUH_annotation.hg38_multianno.txt','SNUH_converted_multianno.csv') # Then, we will get the converted csv file  
+        Convert_Annovar('SNUH_annotation.hg38_multianno.txt','SNUH_converted_multianno.csv') # Then, we will get the converted csv file  
         
         # SKAT_gene_SSD function  
         SKAT_gene_SSD('SNUH_converted_multianno.csv','SNUH','SNUH_example_result.txt',method='SKATO',weights.beta=c(1,25),Is.binary=T,  
