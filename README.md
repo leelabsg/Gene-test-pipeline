@@ -114,7 +114,7 @@ The following analysis can be carried out using the multianno.txt file above.
         
         <pre>
         <code>
-        SKAT_gene_SSD('SNUH_converted_multianno.csv','SNUH','SNUH_result.txt', cov=NULL, method='SKAT-O', weights.beta=c(1,25),  
+        SKAT_gene_SSD('SNUH_converted_multianno.csv','SNUH','SNUH_result.txt', cov=NULL, method='SKATO', weights.beta=c(1,25),  
                        weights=NULL, Is.binary=T, genefunc=c('exonic','splicing','exonic.splicing'),exonicfunc=c('nonsynonymous SNV'), n=1000, leaveSSD=T)
         </code>
         </pre>  
@@ -145,7 +145,7 @@ The following analysis can be carried out using the multianno.txt file above.
         
         <pre>
         <code>
-        SKAT_gene_SSD_specific('SNUH_converted_multianno.csv','SNUH', gene=c('HLA-DRB1', 'HLA-DRB5', 'HLA-B'), 'SNUH_result.txt', cov=NULL, method='SKAT-O',  
+        SKAT_gene_SSD_specific('SNUH_converted_multianno.csv','SNUH', gene=c('HLA-DRB1', 'HLA-DRB5', 'HLA-B'), 'SNUH_result.txt', cov=NULL, method='SKATO',  
                                 weights.beta=c(1,25), weights=NULL, Is.binary=T, genefunc=c('exonic','splicing','exonic.splicing'),exonicfunc=c('nonsynonymous SNV'), n=1000)
         </code>
         </pre>  
