@@ -6,6 +6,39 @@ library(dplyr)
 options(datatable.fread.datatable=F)
 
 
+### QC part 
+
+## DEPTH check 
+
+depth_check<-function(vcfgz, histname,breaks,xlim=NULL){
+  command<-paste0(' --gzvcf ',vcfgz,' --site-mean-depth --out mean_depth')
+  system2('vcftools',command,wait=T)
+  a<-read.table('mean_depth.ldepth.mean',h=T)
+  print(summary(a))
+  jpeg(histname)
+  if(is.null(xlim)){
+    hist(a$MEAN_DEPTH,breaks=breaks)
+  }else{
+    hist(a$MEAN_DEPTH,xlim=xlim,breaks=breaks)
+  }
+    dev.off()
+}
+
+###HWE
+##vcftools --gzvcf filename --hardy  --out hwetable
+
+QCfilter<-function(vcfgz, depth, pval_hwe, OUT){
+  
+  command=paste0(' --gzvcf ', vcfgz,' --min-meanDP ',as.character(depth),' --hwe ',as.character(pval_hwe),' --recode --recode-INFO-all --out ',OUT)
+  system2('vcftools',command, wait=T)
+}
+
+
+
+#Now run the annovar 
+
+
+
 ##Convert_Annovar function
 Convert_Annovar<-function(anno,result){
   
