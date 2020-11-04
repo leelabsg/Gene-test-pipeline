@@ -92,11 +92,11 @@ The following analysis can be carried out using the multianno.txt file above.
         Before executing this function, you must convert your vcf file used in the annoar software into a bfile (bed, bim, fam) via plink.  
         For example, "plink --vcf [VCF_FILENAME].vcf --make-bed --out [BFILE_NAME]"
       
-        *Input = (Annovar result converted.txt, bfile(bed, bim, fam) name, Name to save after processing, cov=NULL, method='SKAT-O', weights.beta=c(1,25), weights=NULL,  
+        *Input = (Annovar result converted.txt, bfile(bed, bim, fam) name, Name to save after processing, cov=NULL, method='SKATO', weights.beta=c(1,25), weights=NULL,  
                   Is.binary, genefunc=c(), exonicfunc=c(), number=1000, leaveSSD=F, plinkver=2)*    
         
         * **cov** : Name of covariate cov.file, default=NULL  
-        * **method** : {SKAT, SKAT-O, Burden}. default='SKAT-O'   
+        * **method** : {SKAT, SKATO, Burden}. default='SKATO'   
         * **weights.beta** : The degree of weighting according to Minor Allele Frequency(MAF)  
         * **weights** : Weights in SKAT function.  
         * **Is.binary** : Check if phenotype is binary or not  
@@ -158,7 +158,7 @@ The following analysis can be carried out using the multianno.txt file above.
         **bfile name** = SNUH (SNUH.bed, SNUH.bim, SNUH.fam)  
         **covar** = NULL  
         **plink version** = plink2  
-        **method** = SKAT-O  
+        **method** = SKATO  
         **gene functions** = c('exonic', 'exonic;splicing', 'ncRNA_exonic;splicing' , 'ncRNA_splicing' , 'splicing')  
         **exonic functions** = c('frameshift deletion', 'frameshift insertion', 'nonframeshift deletion', 'nonframeshift insertion',  
                            'nonsynonymous SNV', 'startloss', 'stopgain', 'stoploss')  
