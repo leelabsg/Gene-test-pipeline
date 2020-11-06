@@ -42,10 +42,10 @@ This library provides a brief description of Gene-based test pipeline
         
           <pre>
           <code>
-          vcftools --gzvcf [FILENAME.vcf.gz] 
+          vcftools --gzvcf [FILENAME.vcf.gz] # or --vcf [FILENAME.vcf]
           --max-missing 0.1     # filter missing rate < 0.1
           --not-chr X --not-chr Y --not-chr M     # exclude chr X, Y, M   
-          --hwe 0.000001 --recode --recode-INFO-all --out     # filter hwe p-value < 10e-6
+          --hwe 0.000001 --recode --recode-INFO-all --out [FILENAME to save]    # filter hwe p-value < 10e-6
           </code>
           </pre>  
 
