@@ -2,8 +2,36 @@ This library provides a brief overview of annovar software and a description of 
 (SKAT R - package : <https://github.com/leeshawn/SKAT>)
 
 -------------------------------------------
+# Quality Control - vcftools
+    * original filtered vcf file
+<pre>
+<code>
+--filter-name LowReadPosRankSum --filter-expression "ReadPosRankSum < -2.0" \
+--filter-name LowMQRankSum --filter-expression "MQRankSum < -2.0" \
+--filter-name LowQual --filter-expression "QUAL < 30.0" \
+--filter-name QD --filter-expression "QD < 3.0" \
+--filter-name FS --filter-expression "FS > 30.0" \
+--filter-name MQ --filter-expression "MQ < 30.0" \
+--filter-name DP --filter-expression "DP < 10" \
+--genotype-filter-name DP --genotype-filter-expression "DP < 10" \
+--genotype-filter-name GQ --genotype-filter-expression "GQ < 10.0"
+</code>
+</pre>
 
-# ANNOVAR
+    * Additional Quality Control
+        * Vcftools
+        Vcftools is a suite of functions for use on genetic variation data in the form of VCF and BCF files.  
+        We can download the vcftools here : https://vcftools.github.io/downloads.html  
+        OR  
+        can be installed in a virtual environment using Anaconda.
+<pre>
+<code>
+conda activate vcf_env    # creating vcf virtual environment
+conda intall -c bioconda vcftools     # install vcftools
+</code>
+</pre>
+
+# Annotation - Annovar
 ANNOVAR (ANNOtate VARiation) is a bioinformatics software tool for the interpretation and prioritization of single nucleotide variants (SNVs), insertions, deletions, and copy number variants (CNVs) of a given genome. It has the ability to annotate human genomes hg18, hg19, and hg38.
 
 
@@ -49,7 +77,7 @@ The following analysis can be carried out using the multianno.txt file above.
 -------------------------------------
 
 
-# Gene based analysis using SKAT
+# Gene based analysis - SKAT
 
 ### SKAT_gene_SSD_All_functions.R
 
