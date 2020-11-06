@@ -2,8 +2,9 @@ This library provides a brief overview of annovar software and a description of 
 (SKAT R - package : <https://github.com/leeshawn/SKAT>)
 
 -------------------------------------------
-# Quality Control - vcftools
-    * original filtered vcf file
+# Quality Control - vcftools  
+   * original filtered vcf file  
+   
 <pre>
 <code>
 --filter-name LowReadPosRankSum --filter-expression "ReadPosRankSum < -2.0" \
@@ -18,7 +19,7 @@ This library provides a brief overview of annovar software and a description of 
 </code>
 </pre>
 
-    * Additional Quality Control
+   * Additional Quality Control  
         * Vcftools
         Vcftools is a suite of functions for use on genetic variation data in the form of VCF and BCF files.  
         We can download the vcftools here : https://vcftools.github.io/downloads.html  
