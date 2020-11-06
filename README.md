@@ -39,6 +39,15 @@ This library provides a brief description of Gene-based test pipeline
         
    * b) Missing rate  
         * Missing rate < 0.1  
+        
+        <pre>
+        <code>
+        vcftools --gzvcf [FILENAME.vcf.gz] 
+        --max-missing 0.1     # filter missing rate < 0.1
+        --not-chr X --not-chr Y --not-chr M     # exclude chr X, Y, M   
+        --hwe 0.000001 --recode --recode-INFO-all --out     # filter hwe p-value < 10e-6
+        </code>
+        </pre>  
 
    
    
