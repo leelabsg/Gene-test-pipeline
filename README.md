@@ -7,24 +7,23 @@ This library provides a brief overview of annovar software and a description of 
    
 <pre>
 <code>
---filter-name LowReadPosRankSum --filter-expression "ReadPosRankSum < -2.0" \
---filter-name LowMQRankSum --filter-expression "MQRankSum < -2.0" \
---filter-name LowQual --filter-expression "QUAL < 30.0" \
---filter-name QD --filter-expression "QD < 3.0" \
---filter-name FS --filter-expression "FS > 30.0" \
---filter-name MQ --filter-expression "MQ < 30.0" \
---filter-name DP --filter-expression "DP < 10" \
---genotype-filter-name DP --genotype-filter-expression "DP < 10" \
---genotype-filter-name GQ --genotype-filter-expression "GQ < 10.0"
+--filter-name LowReadPosRankSum --filter-expression "ReadPosRankSum < -2.0"   
+--filter-name LowMQRankSum --filter-expression "MQRankSum < -2.0"   
+--filter-name LowQual --filter-expression "QUAL < 30.0"  
+--filter-name QD --filter-expression "QD < 3.0"  
+--filter-name FS --filter-expression "FS > 30.0"  
+--filter-name MQ --filter-expression "MQ < 30.0"  
+--filter-name DP --filter-expression "DP < 10"  
+--genotype-filter-name DP --genotype-filter-expression "DP < 10"  
+--genotype-filter-name GQ --genotype-filter-expression "GQ < 10.0"  
 </code>
 </pre>
 
    * Additional Quality Control  
         * Vcftools
         Vcftools is a suite of functions for use on genetic variation data in the form of VCF and BCF files.  
-        We can download the vcftools here : https://vcftools.github.io/downloads.html  
-        OR  
-        can be installed in a virtual environment using Anaconda.
+        We can download the vcftools here : https://vcftools.github.io/downloads.html or    
+        can be installed using Anaconda.
 <pre>
 <code>
 conda activate vcf_env    # creating vcf virtual environment
