@@ -1,9 +1,11 @@
-This library provides a brief overview of annovar software and a description of the function of gene-based analysis using SKAT.  
-(SKAT R - package : <https://github.com/leeshawn/SKAT>)
+This library provides a brief description of Gene-based test pipeline  
+1. Quality Control(QC)  
+2. Annotation  
+3. Gene based test using SKAT function (SKAT R - package : <https://github.com/leeshawn/SKAT>)  
 
 -------------------------------------------
-# Quality Control - vcftools  
-   * original filtered vcf file  
+# 1. Quality Control(QC) - vcftools  
+   * Original filtered vcf file  
    
 <pre>
 <code>
@@ -23,15 +25,20 @@ This library provides a brief overview of annovar software and a description of 
         * Vcftools
         Vcftools is a suite of functions for use on genetic variation data in the form of VCF and BCF files.  
         We can download the vcftools here : https://vcftools.github.io/downloads.html or    
-        can be installed using Anaconda.
+        it can be installed using Anaconda.
 <pre>
 <code>
 conda activate vcf_env    # creating vcf virtual environment
 conda intall -c bioconda vcftools     # install vcftools
 </code>
-</pre>
+</pre>  
 
-# Annotation - Annovar
+
+   * HWE
+   * Missing rate
+
+
+# 2. Annotation - Annovar
 ANNOVAR (ANNOtate VARiation) is a bioinformatics software tool for the interpretation and prioritization of single nucleotide variants (SNVs), insertions, deletions, and copy number variants (CNVs) of a given genome. It has the ability to annotate human genomes hg18, hg19, and hg38.
 
 
@@ -77,7 +84,7 @@ The following analysis can be carried out using the multianno.txt file above.
 -------------------------------------
 
 
-# Gene based analysis - SKAT
+# 3. Gene based test - SKAT
 
 ### SKAT_gene_SSD_All_functions.R
 
