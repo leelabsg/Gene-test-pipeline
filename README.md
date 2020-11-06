@@ -22,7 +22,7 @@ This library provides a brief description of Gene-based test pipeline
 </pre>
 
    * Additional Quality Control  
-        * Vcftools
+        * Vcftools  
         Vcftools is a suite of functions for use on genetic variation data in the form of VCF and BCF files.  
         We can download the vcftools here : https://vcftools.github.io/downloads.html or    
         it can be installed using Anaconda.
