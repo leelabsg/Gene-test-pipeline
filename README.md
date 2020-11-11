@@ -58,10 +58,10 @@ This library provides a brief description of Gene-based test pipeline
           </div>  
 
           * Need to be filtered  
-            PC1 : [SNUH_141, SNUH_93, SNUH_120]  
-            PC2 : [BRC012]
+            PC1*PC2 : [SNUH_141, SNUH_93, SNUH_120]  
+            PC3*PC4 : [BRC012]
             
-          * filtered PCA
+          * Filtered PCA  
            <div>
            <p align="center">
            <img width ="400" height = "400" alt="after_pc1" src="https://user-images.githubusercontent.com/73377376/98784535-9caba900-243e-11eb-8d6f-cfca585c3056.png">
