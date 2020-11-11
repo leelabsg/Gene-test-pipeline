@@ -49,8 +49,8 @@ This library provides a brief description of Gene-based test pipeline
           </code>
           </pre>  
  
-        * c) Principal Component Analysis(PCA)  
-          * Check batch effect
+        * c) Batch effect  
+          * Principal Component Analysis(PCA) 
           <div>
           <p align="center">
           <img width = "400" height = "400" src = "https://user-images.githubusercontent.com/73377376/98785710-5eaf8480-2440-11eb-8254-36df34815fed.png">
