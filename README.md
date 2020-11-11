@@ -54,10 +54,10 @@ This library provides a brief description of Gene-based test pipeline
           <div>
           <p align="center">
           <img width = "400" height = "400" src = "https://user-images.githubusercontent.com/73377376/98784338-51919600-243e-11eb-9205-c96ee55c300e.png" title="PC1*PC2">
-          <img width = "410" height = "430" src = "https://user-images.githubusercontent.com/73377376/98784340-522a2c80-243e-11eb-83f1-c59e8cc6f8a7.png">
+          <img width = "400" height = "400" src = "https://user-images.githubusercontent.com/73377376/98784340-522a2c80-243e-11eb-83f1-c59e8cc6f8a7.png">
           </div>  
 
-          * Need to be filtered
+          * Need to be filtered  
             PC1 : [SNUH_141, SNUH_93, SNUH_120]  
             PC2 : [BRC012]
             
