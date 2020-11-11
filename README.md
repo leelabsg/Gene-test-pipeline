@@ -50,8 +50,8 @@ This library provides a brief description of Gene-based test pipeline
           </pre>  
           
 <div>
-<img width = "300", height = "300", src = "https://user-images.githubusercontent.com/73377376/98779537-5f8fe880-2437-11eb-81e4-5a27d1ea8988.png", alt="PC1*PC2">
-<img width = "300", height = "300", src = "https://user-images.githubusercontent.com/73377376/98779530-5bfc6180-2437-11eb-9d35-388356646ceb.png", alt="PC3*PC4">
+<img width = "300" height = "300" src = "https://user-images.githubusercontent.com/73377376/98779537-5f8fe880-2437-11eb-81e4-5a27d1ea8988.png", alt="PC1*PC2">
+<img width = "300" height = "300" src = "https://user-images.githubusercontent.com/73377376/98779530-5bfc6180-2437-11eb-9d35-388356646ceb.png", alt="PC3*PC4">
 </div>
 
 
