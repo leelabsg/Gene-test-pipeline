@@ -53,8 +53,8 @@ This library provides a brief description of Gene-based test pipeline
           * Principal Component Analysis(PCA) 
           <div>
           <p align="center">
-          <img width = "400" height = "400" src = "https://user-images.githubusercontent.com/73377376/98785710-5eaf8480-2440-11eb-8254-36df34815fed.png">
-          <img width = "400" height = "400" src = "https://user-images.githubusercontent.com/73377376/98785714-5f481b00-2440-11eb-918f-6d06a6e1d90e.png">
+          <img width = "400" height = "400" src = "https://user-images.githubusercontent.com/73377376/98787458-ded6e980-2442-11eb-9c1a-10721eaffcc4.png">
+          <img width = "400" height = "400" src = "https://user-images.githubusercontent.com/73377376/98787460-df6f8000-2442-11eb-9a5e-70d724e4b8dc.png">
           </div>  
 
           * Need to be filtered  
