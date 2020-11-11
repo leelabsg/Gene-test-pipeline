@@ -49,8 +49,8 @@ This library provides a brief description of Gene-based test pipeline
           </code>
           </pre>  
 [div]
-![Uploading bf12.png…]()
-![Uploading bf34.png…]()
+![bf12](https://user-images.githubusercontent.com/73377376/98779537-5f8fe880-2437-11eb-81e4-5a27d1ea8988.png)
+![bf34](https://user-images.githubusercontent.com/73377376/98779530-5bfc6180-2437-11eb-9d35-388356646ceb.png)
 [/div]
 
 
