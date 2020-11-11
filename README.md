@@ -53,8 +53,8 @@ This library provides a brief description of Gene-based test pipeline
           * Check batch effect
           <div>
           <p align="center">
-          <img width = "400" height = "400" src = "https://user-images.githubusercontent.com/73377376/98784338-51919600-243e-11eb-9205-c96ee55c300e.png" title="PC1*PC2">
-          <img width = "400" height = "400" src = "https://user-images.githubusercontent.com/73377376/98784340-522a2c80-243e-11eb-83f1-c59e8cc6f8a7.png">
+          <img width = "400" height = "400" src = "https://user-images.githubusercontent.com/73377376/98785710-5eaf8480-2440-11eb-8254-36df34815fed.png">
+          <img width = "400" height = "400" src = "https://user-images.githubusercontent.com/73377376/98785714-5f481b00-2440-11eb-918f-6d06a6e1d90e.png">
           </div>  
 
           * Need to be filtered  
