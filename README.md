@@ -53,8 +53,8 @@ This library provides a brief description of Gene-based test pipeline
           * Principal Component Analysis(PCA) 
           <div>
           <p align="center">
-          <img width = "400" height = "400" src = "https://user-images.githubusercontent.com/73377376/98787458-ded6e980-2442-11eb-9c1a-10721eaffcc4.png">
-          <img width = "400" height = "400" src = "https://user-images.githubusercontent.com/73377376/98787460-df6f8000-2442-11eb-9a5e-70d724e4b8dc.png">
+          <img width = "350" height = "350" src = "https://user-images.githubusercontent.com/73377376/98787458-ded6e980-2442-11eb-9c1a-10721eaffcc4.png">
+          <img width = "350" height = "350" src = "https://user-images.githubusercontent.com/73377376/98787460-df6f8000-2442-11eb-9a5e-70d724e4b8dc.png">
           </div>  
 
           * Need to be filtered  
@@ -64,8 +64,8 @@ This library provides a brief description of Gene-based test pipeline
           * Filtered PCA  
            <div>
            <p align="center">
-           <img width ="400" height = "420" alt="after_pc1" src="https://user-images.githubusercontent.com/73377376/98784535-9caba900-243e-11eb-8d6f-cfca585c3056.png">
-           <img width ="400" height = "420" alt="afterpc2" src="https://user-images.githubusercontent.com/73377376/98784540-9d443f80-243e-11eb-8bda-fd6f08b6711c.png">
+           <img width ="360" height = "360" alt="after_pc1" src="https://user-images.githubusercontent.com/73377376/98784535-9caba900-243e-11eb-8d6f-cfca585c3056.png">
+           <img width ="360" height = "360" alt="afterpc2" src="https://user-images.githubusercontent.com/73377376/98784540-9d443f80-243e-11eb-8bda-fd6f08b6711c.png">
            </div>
 
 
