@@ -58,8 +58,8 @@ This library provides a brief description of Gene-based test pipeline
           </div>  
 
           * Need to be filtered  
-            PC1*PC2 : [SNUH_141, SNUH_93, SNUH_120]  
-            PC3*PC4 : [BRC012]
+            PC1 X PC2 : [SNUH_141, SNUH_93, SNUH_120]  
+            PC3 X PC4 : [BRC012]
             
           * Filtered PCA  
            <div>
