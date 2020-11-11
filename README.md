@@ -48,10 +48,11 @@ This library provides a brief description of Gene-based test pipeline
                    --hwe 0.000001 --recode --recode-INFO-all --out [FILENAME to save]    # filter hwe p-value < 10e-6
           </code>
           </pre>  
-[div]
-![bf12](https://user-images.githubusercontent.com/73377376/98779537-5f8fe880-2437-11eb-81e4-5a27d1ea8988.png)
-![bf34](https://user-images.githubusercontent.com/73377376/98779530-5bfc6180-2437-11eb-9d35-388356646ceb.png)
-[/div]
+          
+<div>
+<img width = "200", src = "https://user-images.githubusercontent.com/73377376/98779537-5f8fe880-2437-11eb-81e4-5a27d1ea8988.png">
+<img width = "200", src = "https://user-images.githubusercontent.com/73377376/98779530-5bfc6180-2437-11eb-9d35-388356646ceb.png">
+</div>
 
 
 
