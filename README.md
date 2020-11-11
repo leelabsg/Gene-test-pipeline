@@ -53,14 +53,19 @@ This library provides a brief description of Gene-based test pipeline
           * Check batch effect
           <div>
           <p align="center">
-          <img width = "400" height = "400" src = "https://user-images.githubusercontent.com/73377376/98779537-5f8fe880-2437-11eb-81e4-5a27d1ea8988.png" title="PC1*PC2">
-          <img width = "410" height = "430" src = "https://user-images.githubusercontent.com/73377376/98779530-5bfc6180-2437-11eb-9d35-388356646ceb.png" title="PC3*PC4">
+          <img width = "400" height = "400" src = "https://user-images.githubusercontent.com/73377376/98784338-51919600-243e-11eb-9205-c96ee55c300e.png" title="PC1*PC2">
+          <img width = "410" height = "430" src = "https://user-images.githubusercontent.com/73377376/98784340-522a2c80-243e-11eb-83f1-c59e8cc6f8a7.png">
           </div>  
 
-
-          * PC1 : [SNUH_141, SNUH_93, SNUH_120]  
-          * PC2 : [BRC012]
+          * Need to be filtered
+            PC1 : [SNUH_141, SNUH_93, SNUH_120]  
+            PC2 : [BRC012]
             
+          * filtered PCA
+           <div>
+           <img width="199" alt="after_pc1" src="https://user-images.githubusercontent.com/73377376/98784535-9caba900-243e-11eb-8d6f-cfca585c3056.png">
+           <img width="199" alt="afterpc2" src="https://user-images.githubusercontent.com/73377376/98784540-9d443f80-243e-11eb-8bda-fd6f08b6711c.png">
+           </div>
 
 
 --------------------------------------------
