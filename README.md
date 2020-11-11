@@ -63,6 +63,7 @@ This library provides a brief description of Gene-based test pipeline
             
           * filtered PCA
            <div>
+           <p align="center">
            <img width ="400" height = "400" alt="after_pc1" src="https://user-images.githubusercontent.com/73377376/98784535-9caba900-243e-11eb-8d6f-cfca585c3056.png">
            <img width ="400" height = "400" alt="afterpc2" src="https://user-images.githubusercontent.com/73377376/98784540-9d443f80-243e-11eb-8bda-fd6f08b6711c.png">
            </div>
