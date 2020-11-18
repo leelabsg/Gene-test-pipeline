@@ -1,7 +1,7 @@
 #Oneset_genotype_SSD
 Oneset_Genotype_SSD<-function(gene,anno,bfile,number){
   #gene you want, annovar file made by Read_Annovar, plink filename, initial number of genes in each setIDfile
-  anno<-fread(anno,fill=T)
+  anno<-read.csv(anno)
   genelist<-unique(anno$Gene.refGene)
   
   geneloc<-which(genelist==gene)
