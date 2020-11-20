@@ -38,7 +38,7 @@ This library provides a brief description of Gene-based test pipeline
           * HWE < 10e-6  
         
         * b) Missing rate  
-          * Missing rate < 0.1  
+          * Missing rate < 0.85  
         
           <pre>
           <code>
