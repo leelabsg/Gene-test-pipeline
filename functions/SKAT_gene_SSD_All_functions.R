@@ -29,7 +29,7 @@ Convert_Annovar<-function(anno,result){
 
 
 ##Var_Info function
-Var_Info<-function(anno,result,order=T){
+Var_Info<-function(anno,result){
   anno<-read.csv(anno,stringsAsFactors = FALSE)
   #get list of genes and prepare empty dataset
   genelist<-unique(anno$Gene.refGene)
