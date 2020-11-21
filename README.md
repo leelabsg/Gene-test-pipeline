@@ -47,9 +47,9 @@ This library provides a brief description of Gene-based test pipeline
                    --not-chr X --not-chr Y --not-chr M     # exclude chr X, Y, M   
                    --hwe 0.000001 --recode --recode-INFO-all --out [FILENAME to save]    # filter hwe p-value < 10e-6
           </code>
-          </pre>  
  
- Now, the new vcf with QC passed is made. To test whether there is batch effect, Principal component analysis should be done.
+ *Now, the new vcf with QC passed is made. To test whether there is batch effect, Principal component analysis should be done.
+ </pre>
  
         * c) Batch effect  
           * Principal Component Analysis(PCA) 
