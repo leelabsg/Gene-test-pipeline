@@ -1,6 +1,6 @@
 ##Var_Info function
 Var_Info<-function(anno,result,order=T){
-  anno<-read.csv(anno)
+  anno<-read.csv(anno,stringsAsFactors = FALSE)
   #get list of genes and prepare empty dataset
   genelist<-unique(anno$Gene.refGene)
   df=data.frame(chr=NA,gene=NA,start=NA,end=NA)
