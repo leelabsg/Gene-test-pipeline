@@ -1,7 +1,7 @@
 ##Convert_Annovar function
 Convert_Annovar<-function(anno,result){
   
-  #convert the annotation result as csv (only the first to 16th columns are needed)
+  #read the annotation result as table (only the first to 16th columns are needed)
   anno<-fread(anno)
   anno<-anno[1:16]
   
@@ -12,7 +12,8 @@ Convert_Annovar<-function(anno,result){
     }
     anno$Chr[anno$Chr=='chrX']<-'X'
     anno$Chr[anno$Chr=='chrY']<-'Y'
-    anno$Chr[anno$Chr=='chrM']<-'M'
+    anno$Chr[anno$Chr=='M']<-'MT'
+    anno$Chr[anno$Chr=='chrM']<-'MT'
   }
-  write.csv(anno,file=result,row.names=F,quote=F)  
+  write.csv(anno,file=result,row.names=F)  
 }
