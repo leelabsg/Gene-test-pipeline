@@ -49,6 +49,7 @@ This library provides a brief description of Gene-based test pipeline
           </code>
           </pre>  
  
+ Now, the new vcf with QC passed is made. To test whether there is batch effect, Principal component analysis should be done
         * c) Batch effect  
           * Principal Component Analysis(PCA) 
           <div>
