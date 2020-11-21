@@ -55,8 +55,8 @@ This library provides a brief description of Gene-based test pipeline
   </code>
   </pre>
   In Rstudio, with the FILENAME.eigenvec file, the pca plot is easily drawn with built-in plot function.
-        * c) Batch effect  
-          * Principal Component Analysis(PCA) 
+  * c) Batch effect  
+     * Principal Component Analysis(PCA) 
           <div>
           <p align="center">
           <img width = "350" height = "350" src = "https://user-images.githubusercontent.com/73377376/98787458-ded6e980-2442-11eb-9c1a-10721eaffcc4.png">
