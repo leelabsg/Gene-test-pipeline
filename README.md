@@ -67,6 +67,17 @@ This library provides a brief description of Gene-based test pipeline
             PC1 X PC2 : *[SNUH_93, SNUH_120, SNUH_141]*  
             PC3 X PC4 : *[BRC012]*
             
+          <pre>
+          <code>
+          vcftools --remove pca_filter_list.txt --vcf [FILENAME.vcf] --recode --out [FILENAME to save]     # remove subject in list.txt
+          </code>
+          </pre>  
+            
+            * pca_filter_list.txt = BRC012  
+                                    SNUH_93  
+                                    SNUH_120
+                                    SNUH_141  
+            
           * Filtered PCA  
            <div>
            <p align="center">
