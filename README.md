@@ -69,7 +69,8 @@ This library provides a brief description of Gene-based test pipeline
             
           <pre>
           <code>
-          vcftools --remove pca_filter_list.txt --vcf [FILENAME.vcf] --recode --out [FILENAME to save]     # remove subject in list.txt
+          # remove subject in the list.txt  
+          vcftools --remove pca_filter_list.txt --vcf [FILENAME.vcf] --recode --out [FILENAME to save]   
           </code>
           </pre>  
             
