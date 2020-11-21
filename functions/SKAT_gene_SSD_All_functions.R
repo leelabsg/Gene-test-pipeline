@@ -53,9 +53,10 @@ Convert_Annovar<-function(anno,result){
     }
     anno$Chr[anno$Chr=='chrX']<-'X'
     anno$Chr[anno$Chr=='chrY']<-'Y'
-    anno$Chr[anno$Chr=='chrM']<-'M'
+    anno$Chr[anno$Chr=='M']<-'MT'
+    anno$Chr[anno$Chr=='chrM']<-'MT'
   }
-  write.csv(anno,file=result,row.names=F,quote=F)  
+  write.csv(anno,file=result,row.names=F)  
 }
 
 
@@ -132,26 +133,33 @@ SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKATO',weight
     }
   } 
   
-  #change the name of the snps ID to prevent duplication
-  command2<-paste0(' --bfile ',bfile, ' --set-all-var-ids @:#:\\$r:\\$a --new-id-max-allele-len 300 --make-bed --out changed_',bfile)
+ #change the name of the snps ID to prevent duplication
+  command<-paste0(' --bfile ',bfile, ' --set-missing-var-ids missing@:#:\\$r:\\$a --new-id-max-allele-len 300 --rm-dup retain-mismatch  --make-bed --out changed_',bfile)
   if(plinkver==1){
-     if(!file.exists('./plink')){
+    if(!file.exists('./plink')){
       tryCatch(stop("The plink file is not in the current directory"))
-  }
-  bim<-read.table(paste0(bfile,'.bim'))
-  bim$V2<-paste0(as.character(bim$V1),':',as.character(bim$V4),':',as.character(bim$V6),':',as.character(bim$V5))
-  write.table(bim,file=paste0('changed_',bfile,'.bim'),quote=F,row.names = F,col.names = F)
-  command<-paste0(' --bed ',bfile, '.bed --bim changed_',bfile,'.bim --fam ',bfile, '.fam --make-bed --out changed_',bfile)
-  
-  system2('./plink',command,wait=T)
-}else{
-   if(!file.exists('./plink2')){
+    }
+    system2('./plink',command,wait=T)
+  }else{
+    if(!file.exists('./plink2')){
     tryCatch(stop("The plink2 file is not in the current directory"))
-}
-system2('./plink2',command2,wait=T)
-}
-anno<-read.csv(anno)
-genelist<-unique(anno$Gene.refGene)
+    }
+    system2('./plink2',command,wait=T)
+  }
+  
+  #read converted annovar result file 
+  anno<-read.csv(anno,stringsAsFactors = FALSE)
+  genelist<-unique(anno$Gene.refGene)
+  bim_o<-read.table(paste0('changed_',bfile,'.bim'),stringsAsFactors=F)
+  #list of duplicated variants
+  mismatch<-read.table(paste0('changed_',bfile,'.rmdup.mismatch'),stringsAsFactors=F)
+  bim_oo<-bim_o
+  #To avoid duplication, put information of ref, alt alleles on duplicated variants
+  bim_o[which(bim_o$V2 %in% mismatch$V1),2]<-paste0(bim_o[which(bim_o$V2 %in% mismatch$V1),2],':', bim_o[which(bim_o$V2 %in% mismatch$V1),6],':', bim_o[which(bim_o$V2 %in% mismatch$V1),5])
+  
+  write.table(bim_o,file=paste0('changed_',bfile,'.bim'),col.names=F,row.names=F,quote=F)
+  bim<-read.table(paste0('changed_',bfile,'.bim'),stringsAsFactors=F)
+	
 #for the binary phenotype, use SKATBinary.SSD.All 
 
 if(Is.binary){
@@ -175,18 +183,19 @@ if(Is.binary){
         #get the annovar result file only for the part of the gene
         #which fulfilled the condition
         anno_gene<-anno[exon_id,1:16]    
-        
+        bim_gene<-bim[exon_id,]
         for (j in 1:length(exon_id)){
           #aggregate the info in annovar file to get the same name as changed snp name
-          snp_name<-paste0(as.character(anno_gene[j,1]),':',as.character(anno_gene[j,2]),':',as.character(anno_gene[j,4]),':',as.character(anno_gene[j,5]))
-          row<-c(as.character(anno_gene[j,7]),snp_name)
-          
-	 
-	  snps_selected<-rbind(snps_selected,snp_name)
-          SetID<-rbind(SetID,row)
+          snp_name<-bim_gene[j,2]
+  	        if(snp_name %in% mismatch$V1){
+  		        snp_name<-paste0(snp_name,':',as.character(bim_gene[j,6]),':',as.character(bim_gene[j,5]))
+  	        }
+  	        row<-c(as.character(anno_gene[j,7]),snp_name)
+  	        snps_selected<-rbind(snps_selected,snp_name)
+            SetID<-rbind(SetID,row)
+          }
         }
       }
-    }
     
     #In case of the empty SetID file, skip to the next cycle
     if(dim(SetID)[1]!=1 & dim(snps_selected)[1]!=1){
@@ -258,15 +267,18 @@ if(Is.binary){
     if (length(exon_id)>0){
       
       anno_gene<-anno[exon_id,1:16]
-      
+      bim_gene<-bim[exon_id,]
       for (j in 1:length(exon_id)){
-        snp_name<-paste0(as.character(anno_gene[j,1]),':',as.character(anno_gene[j,2]),':',as.character(anno_gene[j,4]),':',as.character(anno_gene[j,5]))
-        row<-c(as.character(anno_gene[j,7]),snp_name)
+	  snp_name<-bim_gene[j,2]
+          if(snp_name %in% mismatch$V1){
+	  snp_name<-paste0(snp_name,':',as.character(bim_gene[j,6]),':',as.character(bim_gene[j,5]))
+          }
+      	row<-c(as.character(anno_gene[j,7]),snp_name)
         snps_selected<-rbind(snps_selected,snp_name)
         SetID<-rbind(SetID,row)
+        }
       }
     }
-  }
   
   if(dim(SetID)[1]!=1 & dim(snps_selected)[1]!=1){
     
@@ -347,16 +359,21 @@ else{
         #get the annovar result file only for the part of the gene
         #which fulfilled the condition
         anno_gene<-anno[exon_id,1:16]    
-        
+        bim_gene<-bim[exon_id,]
         for (j in 1:length(exon_id)){
-          #aggregate the info in annovar file to get the same name as changed snp name
-          snp_name<-paste0(as.character(anno_gene[j,1]),':',as.character(anno_gene[j,2]),':',as.character(anno_gene[j,4]),':',as.character(anno_gene[j,5]))
-          row<-c(as.character(anno_gene[j,7]),snp_name)
-          snps_selected<-rbind(snps_selected,snp_name)
-          SetID<-rbind(SetID,row)
+            #aggregate the info in annovar file to get the same name as changed snp name
+            snp_name<-bim_gene[j,2]
+          
+  	    if(snp_name %in% mismatch$V1){
+  		snp_name<-paste0(snp_name,':',as.character(bim_gene[j,6]),':',as.character(bim_gene[j,5]))
+  	    }
+  
+  	    row<-c(as.character(anno_gene[j,7]),snp_name)
+            snps_selected<-rbind(snps_selected,snp_name)
+            SetID<-rbind(SetID,row)
+          }
         }
       }
-    }
     
     #In case of the empty SetID file, skip to the next cycle
     if(dim(SetID)[1]!=1 & dim(snps_selected)[1]!=1){
@@ -431,15 +448,20 @@ else{
     if (length(exon_id)>0){
       
       anno_gene<-anno[exon_id,1:16]
-      
+      bim_gene<-bim[exon_id,]
       for (j in 1:length(exon_id)){
-        snp_name<-paste0(as.character(anno_gene[j,1]),':',as.character(anno_gene[j,2]),':',as.character(anno_gene[j,4]),':',as.character(anno_gene[j,5]))
-        row<-c(as.character(anno_gene[j,7]),snp_name)
-        snps_selected<-rbind(snps_selected,snp_name)
-        SetID<-rbind(SetID,row)
+        snp_name<-bim_gene[j,2]
+     
+        if(snp_name %in% mismatch$V1){
+  	   snp_name<-paste0(snp_name,':',as.character(bim_gene[j,6]),':',as.character(bim_gene[j,5]))
+          }
+  
+  	  row<-c(as.character(anno_gene[j,7]),snp_name)
+          snps_selected<-rbind(snps_selected,snp_name)
+          SetID<-rbind(SetID,row)
+        }
       }
     }
-  }
   
   if(dim(SetID)[1]!=1 & dim(snps_selected)[1]!=1){
     
@@ -547,25 +569,27 @@ SKAT_gene_SSD_specific<-function(anno,bfile,gene=c(),resultfilename,cov=NULL,met
   } 
   
   #change the name of the snps ID to prevent duplication
-  command2<-paste0(' --bfile ',bfile, ' --set-all-var-ids @:#:\\$r:\\$a --new-id-max-allele-len 300 --make-bed --out changed_',bfile)
+ command2<-paste0(' --bfile ',bfile, ' --set-missing-var-ids @:#:\\$r:\\$a --new-id-max-allele-len 300 --make-bed --rm-dup retain-mismatch --out changed_',bfile)
   if(plinkver==1){
-     if(!file.exists('./plink')){
+    if(!file.exists('./plink')){
       tryCatch(stop("The plink file is not in the current directory"))
-  }
-  bim<-read.table(paste0(bfile,'.bim'))
-  bim$V2<-paste0(as.character(bim$V1),':',as.character(bim$V4),':',as.character(bim$V6),':',as.character(bim$V5))
-  write.table(bim,file=paste0('changed_',bfile,'.bim'),quote=F,row.names = F,col.names = F)
-  command<-paste0(' --bed ',bfile, '.bed --bim changed_',bfile,'.bim --fam ',bfile, '.fam --make-bed --out changed_',bfile)
-  
-  system2('./plink',command,wait=T)
-}else{
-   if(!file.exists('./plink2')){
+    }
+    system2('./plink',command2,wait=T)
+  }else{
+    if(!file.exists('./plink2')){
     tryCatch(stop("The plink2 file is not in the current directory"))
-}
-system2('./plink2',command2,wait=T)
-}
-anno<-read.csv(anno)
-genelist<-gene
+    }
+    system2('./plink2',command2,wait=T)
+  }
+  anno<-read.csv(anno,stringsAsFactors = FALSE)
+  genelist<-gene
+  bim_o<-read.table(paste0('changed_',bfile,'.bim'),stringsAsFactors=F)
+  mismatch<-read.table(paste0('changed_',bfile,'.rmdup.mismatch'),stringsAsFactors=F)
+  
+  bim_o[which(bim_o$V2 %in% mismatch$V1),2]<-paste0(bim_o[which(bim_o$V2 %in% mismatch$V1),2],':', bim_o[which(bim_o$V2 %in% mismatch$V1),6],':', bim_o[which(bim_o$V2 %in% mismatch$V1),5])
+  write.table(bim_o,file=paste0('changed_',bfile,'.bim'),col.names=F,row.names=F,quote=F)
+  
+  bim<-read.table(paste0('changed_',bfile,'.bim'),stringsAsFactors=F)
 #for the binary phenotype, use SKATBinary.SSD.All 
 
 if(Is.binary){
@@ -589,16 +613,21 @@ if(Is.binary){
         #get the annovar result file only for the part of the gene
         #which fulfilled the condition
         anno_gene<-anno[exon_id,1:16]    
-        
+        bim_gene<-bim[exon_id,]
         for (j in 1:length(exon_id)){
-          #aggregate the info in annovar file to get the same name as changed snp name
-          snp_name<-paste0(as.character(anno_gene[j,1]),':',as.character(anno_gene[j,2]),':',as.character(anno_gene[j,4]),':',as.character(anno_gene[j,5]))
-          row<-c('set',snp_name)
-          snps_selected<-rbind(snps_selected,snp_name)
-          SetID<-rbind(SetID,row)
+            #aggregate the info in annovar file to get the same name as changed snp name
+            snp_name<-bim_gene[j,2]
+  	       
+  	    if(snp_name %in% mismatch$V1){
+  	      snp_name<-paste0(snp_name,':',as.character(bim_gene[j,6]),':',as.character(bim_gene[j,5]))
+  	    }
+  
+ 	    row<-c('set',snp_name)
+            snps_selected<-rbind(snps_selected,snp_name)
+            SetID<-rbind(SetID,row)
+          }
         }
       }
-    }
     
     #In case of the empty SetID file, skip to the next cycle
     if(dim(SetID)[1]!=1 & dim(snps_selected)[1]!=1){
@@ -670,16 +699,19 @@ if(Is.binary){
     if (length(exon_id)>0){
       
       anno_gene<-anno[exon_id,1:16]
-      
+      bim_gene<-bim[exon_id,]
       for (j in 1:length(exon_id)){
-        snp_name<-paste0(as.character(anno_gene[j,1]),':',as.character(anno_gene[j,2]),':',as.character(anno_gene[j,4]),':',as.character(anno_gene[j,5]))
-        row<-c('set',snp_name)
+        snp_name<-bim_gene[j,2]
+        if(snp_name %in% mismatch$V1){
+	   snp_name<-paste0(snp_name,':',as.character(bim_gene[j,6]),':',as.character(bim_gene[j,5]))
+        }
+
+	row<-c('set',snp_name)
         snps_selected<-rbind(snps_selected,snp_name)
         SetID<-rbind(SetID,row)
-      }
-    }
-  }
- 
+       }
+     }
+   }
   if(dim(SetID)[1]!=1 & dim(snps_selected)[1]!=1){
     
     SetID<-SetID[2:nrow(SetID),]
@@ -758,16 +790,21 @@ else{
         #get the annovar result file only for the part of the gene
         #which fulfilled the condition
         anno_gene<-anno[exon_id,1:16]    
-        
+        bim_gene<-bim[exon_id,]
         for (j in 1:length(exon_id)){
           #aggregate the info in annovar file to get the same name as changed snp name
-          snp_name<-paste0(as.character(anno_gene[j,1]),':',as.character(anno_gene[j,2]),':',as.character(anno_gene[j,4]),':',as.character(anno_gene[j,5]))
-          row<-c('set',snp_name)
+          snp_name<-bim_gene[j,2]
+  	  if(snp_name %in% mismatch$V1){
+  	     snp_name<-paste0(snp_name,':',as.character(bim_gene[j,6]),':',as.character(bim_gene[j,5]))
+  	  }
+  
+	  row<-c('set',snp_name)
           snps_selected<-rbind(snps_selected,snp_name)
           SetID<-rbind(SetID,row)
-        }
-      }
-    }
+         }
+       }
+     }
+   }
     
     #In case of the empty SetID file, skip to the next cycle
     if(dim(SetID)[1]!=1 & dim(snps_selected)[1]!=1){
@@ -850,15 +887,21 @@ else{
     if (length(exon_id)>0){
       
       anno_gene<-anno[exon_id,1:16]
-      
+      bim_gene<-bim[exon_id,]
       for (j in 1:length(exon_id)){
-        snp_name<-paste0(as.character(anno_gene[j,1]),':',as.character(anno_gene[j,2]),':',as.character(anno_gene[j,4]),':',as.character(anno_gene[j,5]))
-        row<-c('set',snp_name)
-        snps_selected<-rbind(snps_selected,snp_name)
-        SetID<-rbind(SetID,row)
+
+	 snp_name<-bim_gene[j,2]
+	 if(snp_name %in% mismatch$V1){
+            snp_name<-paste0(snp_name,':',as.character(bim_gene[j,6]),':',as.character(bim_gene[j,5]))
+	 }
+
+	 row<-c('set',snp_name)
+	 snps_selected<-rbind(snps_selected,snp_name)
+	 SetID<-rbind(SetID,row)
+        }
       }
     }
-  }
+
   
   if(dim(SetID)[1]!=1 & dim(snps_selected)[1]!=1){
     
