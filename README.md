@@ -47,14 +47,18 @@ This library provides a brief description of Gene-based test pipeline
                    --not-chr X --not-chr Y --not-chr M     # exclude chr X, Y, M   
                    --hwe 0.000001 --recode --recode-INFO-all --out [FILENAME to save]    # filter hwe p-value < 10e-6
           </code>
-           </pre> 
-           Now, to check the effect of batch effect in the newly made vcf with QC passed variants, one can try PCA.
-<pre>
-<code>
-  ./plink2 --vcf [VCF name] --pca --out FILENAME
-  </code>
-  </pre>
-  In Rstudio, with the FILENAME.eigenvec file, the pca plot is easily drawn with built-in plot function.
+          </pre> 
+          
+           Now, to check the effect of batch effect in the newly made vcf with QC passed variants, one can try PCA.  
+           
+          <pre>
+          <code>
+          ./plink2 --vcf [VCF name] --pca --out FILENAME
+          </code>
+          </pre>  
+          
+  In Rstudio, with the FILENAME.eigenvec file, the pca plot is easily drawn with built-in plot function.  
+  
   * c) Batch effect  
      * Principal Component Analysis(PCA) 
           <div>
