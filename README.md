@@ -182,8 +182,17 @@ The following analysis can be carried out using the multianno.txt file above.
   * SKAT_gene_SSD function  
         **Modified : there are no omitted variants by referring to the variant name in the bim file(Previously, there were some omitted variables)**  
       * Gene-wise SKAT (Security Kernel Association Test) analysis to confirm the significance of genes  
-        Before executing this function, you must convert your vcf file used in the annoar software into a bfile (bed, bim, fam) via plink.  
-        For example, "plink --vcf [VCF_FILENAME].vcf --make-bed --out [BFILE_NAME]"
+        Before executing this function, you must convert your vcf file used in the annoar software into a bfile (bed, bim, fam) via plink as mentioned above. Text file with covariates should be made first with the changed fam file. The code for making the covariate file is 
+        
+        <pre>
+        <code>
+        ./plink2 --bfile [bfile name] --covar [text file] --write-covar
+        </code>
+        </pre>
+        
+        *covariate.txt = FID IID PC1
+                         BRC001 BRC001 0
+                         BRC002 BRC002 0
       
         *Input = (Annovar result converted.txt, bfile(bed, bim, fam) name, Name to save after processing, cov=NULL, method='SKATO', weights.beta=c(1,25), weights=NULL,  
                   Is.binary, genefunc=c(), exonicfunc=c(), number=1000, leaveSSD=F, plinkver=2)*    
