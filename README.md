@@ -74,14 +74,15 @@ In Rstudio, with the FILENAME.eigenvec file, the pca plot is easily drawn with b
           <pre>
           <code>
           # remove subject in the list.txt  
-          vcftools --remove pca_filter_list.txt --vcf [FILENAME.vcf] --recode --out [FILENAME to save]   
+          ./plink2 --vcf [FILENAME.vcf] --fam [FAMFILENAME] --remove list.txt --make-bed --out [FILENAME to save]   
           </code>
           </pre>  
             
-            * pca_filter_list.txt = BRC012  
-                                    SNUH_93  
-                                    SNUH_120
-                                    SNUH_141  
+      
+            * pca_filter_list.txt = BRC012 BRC012  
+                                    SNUH_93 SNUH_93 
+                                    SNUH_120 SNUH_120
+                                    SNUH_141 SNUH_141
             
           * Filtered PCA  
            <div>
