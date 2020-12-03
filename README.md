@@ -194,8 +194,7 @@ The following analysis can be carried out using the multianno.txt file above.
                               BRC001 BRC001 0
                               BRC002 BRC002 0
       
-        *Input = (Annovar result converted.txt, bfile(bed, bim, fam) name, Name to save after processing, cov=NULL, method='SKATO', weights.beta=c(1,25), weights=NULL,  
-                  Is.binary, genefunc=c(), exonicfunc=c(), number=1000, leaveSSD=F, plinkver=2)*    
+        *Input = (Annovar result converted.txt, bfile(bed, bim, fam) name, Name to save after processing, cov=NULL, method='SKATO', weights.beta=c(1,25), weights=NULL,                  Is.binary, genefunc=c(), exonicfunc=c(), number=1000, leaveSSD=F, plinkver=2)*    
         
         * **cov** : Name of covariate cov.file, default=NULL  
         * **method** : {SKAT, SKATO, Burden}. default='SKATO'   
