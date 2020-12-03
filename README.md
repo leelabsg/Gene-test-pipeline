@@ -252,6 +252,38 @@ The following analysis can be carried out using the multianno.txt file above.
         </code>
         </pre>  
               
+  * case_control_maf  
+      * This function performs MAF(Minor Allele Frequency) filtering for control group.  
+        
+        *Input = (bile name, Name to save, control=T, coding=0, plinkcommand='--maf 0.01', plinkver=2)*  
+        
+        * **control** : control group or not, default=T(control)  
+        * **plinkcommand** : MAF threshold, default level=0.01  
+        
+        
+        <pre>
+        <code>
+        case_control_maf('SNUH', 'filtered_SNUH', control=T, coding=0, plinkcommand='--maf 0.01', plinkver=2)
+        </code>
+        </pre>        
+              
+  * SKAT_gene_list  
+      * This function performs test only with specific var list  
+        
+        *Input = (bfile name, listfile, cov=NULL, method='SKATO', weights.beta=c(1,25), weights=NULL, Is.binary, plinkver=2)*  
+        
+        * **listfile** : var list filename, default='ccsnplist.txt'  
+        
+        
+        <pre>
+        <code>
+        SKAT_gene_list('SNUH', listfile='ccsnplist.txt', cov=NULL, method='SKATO', weights.beta=c(1,25), weights=NULL, Is.binary, plinkver=2)
+        </code>
+        </pre> 
+        
+              
+              
+              
               
 # Code examples of SNUH
    * Files and parameters  
