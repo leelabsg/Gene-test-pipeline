@@ -949,3 +949,96 @@ Oneset_Genotype_SSD<-function(gene,anno,bfile,number){
   id<-SSD.INFO$SetInfo[which(SSD.INFO$SetInfo$SetID==gene),]$SetIndex
   Get_Genotypes_SSD(SSD.INFO,id)
 }
+
+case_control_maf<-function(changed_bfile,resultfilename,control=T,coding=0,plinkcommand='--maf 0.01',plinkver=2){
+  fam<-read.table(paste0(changed_bfile,'.fam'),stringsAsFactors = F)
+  if(control){
+    fam<-fam[which(fam$V6==coding),]
+  }else{
+    fam<-fam[which(fam$V6==coding+1),]
+  }
+  write.table(fam[,1:2],file=paste0(resultfilename,'.txt'),quote=F,col.names=F,row.names=F)
+  command<-paste0(' --bfile ',changed_bfile, ' --keep ',resultfilename,'.txt --make-bed --out ',resultfilename)
+  if(plinkver==1){
+    system2('./plink',command,wait=T)
+  }else{
+    system2('./plink2',command,wait=T)
+  }
+  command<-paste0(' --bfile ',resultfilename, ' ',plinkcommand, ' --make-just-bim --out ',resultfilename)
+  if(plinkver==1){
+    system2('./plink',command,wait=T)
+  }else{
+    system2('./plink2',command,wait=T)
+  }
+  
+  list_fin=read.table(paste0(resultfilename,'.bim'),stringsAsFactors = F)
+  write.table(list_fin[,2],file='ccsnplist.txt',quote=F,col.names = F,row.names = F)
+}
+
+SKAT_gene_list<-function(changed_bfile,listfile='ccsnplist.txt',cov=NULL,method='SKATO',weights.beta=c(1,25),weights=NULL,Is.binary,plinkver=2){
+  
+  #making fam_cov file 
+  #object for continuous phenotype
+  if(!Is.binary){
+    if(!is.null(cov)){
+      File.Fam<-paste0(changed_bfile,'.fam')
+      File.Cov<-cov
+      Fam_cov<-Read_Plink_FAM_Cov(File.Fam,File.Cov,Is.binary = F)
+      y<-Fam_cov$Phenotype
+      obj<-SKAT_Null_Model(y~as.matrix(Fam_cov[,7:ncol(Fam_cov)]),out_type='C')
+      
+    }else{
+      File.Fam<-paste0(changed_bfile,'.fam')
+      Fam_cov<-Read_Plink_FAM(File.Fam,Is.binary=F)
+      y<-Fam_cov$Phenotype
+      obj<-SKAT_Null_Model(y~1,out_type='C')
+    }
+  }  
+  
+  #object for binary phenotype
+  if(Is.binary){
+    if(!is.null(cov)){
+      File.Fam<-paste0(changed_bfile,'.fam')
+      File.Cov<-cov
+      Fam_cov<-Read_Plink_FAM_Cov(File.Fam,File.Cov,Is.binary = T)
+      y<-Fam_cov$Phenotype
+      obj<-SKAT_Null_Model(y~as.matrix(Fam_cov[,7:ncol(Fam_cov)]),out_type='D',data=Fam_cov,Adjustment=F)
+      
+    }else{
+      File.Fam<-paste0(changed_bfile,'.fam')
+      Fam_cov<-Read_Plink_FAM(File.Fam,Is.binary=T)
+      y<-Fam_cov$Phenotype
+      obj<-SKAT_Null_Model(y~1,out_type='D',data=Fam_cov,Adjustment=F)
+    }
+  } 
+  
+  
+  command<-paste0(' --bfile ',changed_bfile, ' --extract ',listfile,' --make-bed --out selected_',changed_bfile)
+  if(plinkver==1){
+    system2('./plink',command,wait=T)
+  }else{
+    system2('./plink2',command,wait=T)
+  }
+  list<-read.table(listfile,stringsAsFactors = F)
+  set<-rep('set',length(list))
+  set<-cbind(set,list)
+  write.table(set,file=paste0('selected_',changed_bfile,'.SetID'),quote=F,row.names = F,col.names = F)    
+    
+  File.Bed<-paste0('selected_',changed_bfile,'.bed')
+  File.Bim<-paste0('selected_',changed_bfile,'.bim')
+  File.Fam<-paste0('selected_',changed_bfile,'.fam')
+  File.SetID<-paste0('selected_',changed_bfile,'.SetID')
+  File.SSD<-paste0('selected_',changed_bfile,'.SSD')
+  File.Info<-paste0('selected_',changed_bfile,'.SSD.info')
+  Generate_SSD_SetID(File.Bed,File.Bim,File.Fam,File.SetID,File.SSD,File.Info)
+  SSD.Info<-Open_SSD(File.SSD,File.Info)
+  if(Is.binary){
+    result<-SKATBinary.SSD.All(SSD.Info,obj,method=method,weights.beta=weights.beta,weights=weights)         
+  }else{
+    result<-SKAT.SSD.All(SSD.Info,obj,method=method,weights.beta=weights.beta,weights=weights)         
+  }
+  print(result)
+  Close_SSD()
+  
+  
+}
