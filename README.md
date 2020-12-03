@@ -237,8 +237,7 @@ The following analysis can be carried out using the multianno.txt file above.
       * This function is a modified version of the existing SKAT_gene_SSD function.  
         With the gene=c() parameter, a specific gene list can be inserted into the input to conduct group analysis only for these genes.  
     
-        *Input = (Annovar result converted.txt, bfile(bed, bim, fam) name, **gene=c()**, Name to save after processing, cov=NULL, method='SKAT', weights.beta=c(1,25),  
-                  weights=NULL, Is.binary, genefunc=c(), exonicfunc=c(), number=1000, leaveSSD=F, plinkver=2)*        
+        *Input = (Annovar result converted.txt, bfile(bed, bim, fam) name, **gene=c()**, Name to save after processing, cov=NULL, method='SKAT', weights.beta=c(1,25),                  weights=NULL, Is.binary, genefunc=c(), exonicfunc=c(), number=1000, leaveSSD=F, plinkver=2)*        
         
         * **gene** : Gene list to be used for gene group analysis 
         * **weights.beta** : The degree of weighting according to Minor Allele Frequency(MAF)
