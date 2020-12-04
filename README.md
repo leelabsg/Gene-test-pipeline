@@ -251,9 +251,10 @@ The following analysis can be carried out using the multianno.txt file above.
         </pre>  
               
   * case_control_maf  
-      * This function performs MAF(Minor Allele Frequency) filtering for control group.  
+      * This function performs MAF(Minor Allele Frequency) filtering for control group. The bfile "must be" the bfile with the changed variants name after the analysis from the above functions.
+      (The changed names are for preventing duplication of the variants' name.)
         
-        *Input = (bfile name, plinkfile to save, control=T, coding=0, plinkcommand='--maf 0.01', plinkver=2)*  
+        *Input = (changed_bfile name, plinkfile to save, control=T, coding=0, plinkcommand='--maf 0.01', plinkver=2)*  
         
         * **control** : control group or not, default=T(control), if control=F, maf is calculated among case group.  
         * **coding** : Default is zero for {Control:Case= 0:1} coding. If your control is 1 and case is 2, please put coding=1.
@@ -262,7 +263,7 @@ The following analysis can be carried out using the multianno.txt file above.
         
         <pre>
         <code>
-        case_control_maf('SNUH', 'filtered_SNUH', control=T, coding=0, plinkcommand='--maf 0.01', plinkver=2)
+        case_control_maf('changed_SNUH', 'filtered_SNUH', control=T, coding=0, plinkcommand='--maf 0.01', plinkver=2)
         </code>
         </pre>        
               
