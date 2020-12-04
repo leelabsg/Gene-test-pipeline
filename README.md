@@ -277,7 +277,7 @@ The following analysis can be carried out using the multianno.txt file above.
         
         <pre>
         <code>
-        SKAT_gene_list('SNUH', listfile='ccsnplist.txt', cov=NULL, method='SKATO', weights.beta=c(1,25), weights=NULL, Is.binary, plinkver=2)
+        SKAT_gene_list('changed_SNUH', listfile='ccsnplist.txt', cov=NULL, method='SKATO', weights.beta=c(1,25), weights=NULL, Is.binary, plinkver=2)
         </code>
         </pre> 
         
