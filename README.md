@@ -253,11 +253,12 @@ The following analysis can be carried out using the multianno.txt file above.
   * case_control_maf  
       * This function performs MAF(Minor Allele Frequency) filtering for control group.  
         
-        *Input = (bile name, Name to save, control=T, coding=0, plinkcommand='--maf 0.01', plinkver=2)*  
+        *Input = (bfile name, plinkfile to save, control=T, coding=0, plinkcommand='--maf 0.01', plinkver=2)*  
         
-        * **control** : control group or not, default=T(control)  
-        * **plinkcommand** : MAF threshold, default level=0.01  
-        
+        * **control** : control group or not, default=T(control), if control=F, maf is calculated among case group.  
+        * **coding** : Default is zero for {Control:Case= 0:1} coding. If your control is 1 and case is 2, please put coding=1.
+        * **plinkcommand** : plink command you want for filtering. default level is --maf 0.01. If you want upper threshold for maf, you can put plinkcommand='--max-maf 0.05', etc.  
+        * **plink file name** : This part is not important here. It is just the plink file with only control or case group included to get filtered variants within the group. The output of the function is 'ccsnplist.txt.' If you want to change the name of the file, please do it manually. 
         
         <pre>
         <code>
@@ -270,7 +271,7 @@ The following analysis can be carried out using the multianno.txt file above.
         
         *Input = (bfile name, listfile, cov=NULL, method='SKATO', weights.beta=c(1,25), weights=NULL, Is.binary, plinkver=2)*  
         
-        * **listfile** : var list filename, default='ccsnplist.txt'  
+        * **listfile** : var list filename, default='ccsnplist.txt'. There should not be quote in the list file. If you use R to make the list file, please set 'quote=F, row.names=F, col.names=F' in the write.table function.  
         
         
         <pre>
