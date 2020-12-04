@@ -270,7 +270,7 @@ The following analysis can be carried out using the multianno.txt file above.
   * SKAT_gene_list  
       * This function performs test only with specific var list  
         
-        *Input = (bfile name, listfile, cov=NULL, method='SKATO', weights.beta=c(1,25), weights=NULL, Is.binary, plinkver=2)*  
+        *Input = (changed_bfile name, listfile, cov=NULL, method='SKATO', weights.beta=c(1,25), weights=NULL, Is.binary, plinkver=2)*  
         
         * **listfile** : var list filename, default='ccsnplist.txt'. There should not be quote in the list file. If you use R to make the list file, please set 'quote=F, row.names=F, col.names=F' in the write.table function.  
         
