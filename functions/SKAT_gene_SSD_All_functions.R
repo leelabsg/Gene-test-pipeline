@@ -117,14 +117,14 @@ SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKATO',weight
   #read converted annovar result file 
   anno<-read.csv(anno,stringsAsFactors = FALSE)
   genelist<-unique(anno$Gene.refGene)
-  bim_o<-read.table(paste0('changed_',bfile,'.bim'),stringsAsFactors=F)
+  try({bim_o<-read.table(paste0('changed_',bfile,'.bim'),stringsAsFactors=F)
   #list of duplicated variants
   mismatch<-read.table(paste0('changed_',bfile,'.rmdup.mismatch'),stringsAsFactors=F)
   bim_oo<-bim_o
   #To avoid duplication, put information of ref, alt alleles on duplicated variants
   bim_o[which(bim_o$V2 %in% mismatch$V1),2]<-paste0(bim_o[which(bim_o$V2 %in% mismatch$V1),2],':', bim_o[which(bim_o$V2 %in% mismatch$V1),6],':', bim_o[which(bim_o$V2 %in% mismatch$V1),5])
   
-  write.table(bim_o,file=paste0('changed_',bfile,'.bim'),col.names=F,row.names=F,quote=F)
+  write.table(bim_o,file=paste0('changed_',bfile,'.bim'),col.names=F,row.names=F,quote=F)})
   bim<-read.table(paste0('changed_',bfile,'.bim'),stringsAsFactors=F)
   
   #for the binary phenotype, use SKATBinary.SSD.All 
@@ -543,11 +543,11 @@ SKAT_gene_SSD_specific<-function(anno,bfile,gene=c(),resultfilename,cov=NULL,met
   }
   anno<-read.csv(anno,stringsAsFactors = FALSE)
   genelist<-gene
-  bim_o<-read.table(paste0('changed_',bfile,'.bim'),stringsAsFactors=F)
+  try({bim_o<-read.table(paste0('changed_',bfile,'.bim'),stringsAsFactors=F)
   mismatch<-read.table(paste0('changed_',bfile,'.rmdup.mismatch'),stringsAsFactors=F)
   
   bim_o[which(bim_o$V2 %in% mismatch$V1),2]<-paste0(bim_o[which(bim_o$V2 %in% mismatch$V1),2],':', bim_o[which(bim_o$V2 %in% mismatch$V1),6],':', bim_o[which(bim_o$V2 %in% mismatch$V1),5])
-  write.table(bim_o,file=paste0('changed_',bfile,'.bim'),col.names=F,row.names=F,quote=F)
+  write.table(bim_o,file=paste0('changed_',bfile,'.bim'),col.names=F,row.names=F,quote=F)})
   
   bim<-read.table(paste0('changed_',bfile,'.bim'),stringsAsFactors=F)
   #for the binary phenotype, use SKATBinary.SSD.All 
