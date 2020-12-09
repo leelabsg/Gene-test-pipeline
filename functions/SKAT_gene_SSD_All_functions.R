@@ -154,9 +154,9 @@ SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKATO',weight
           for (j in 1:length(exon_id)){
             #aggregate the info in annovar file to get the same name as changed snp name
   	        snp_name<-bim_gene[j,2]
-  	        try({if(snp_name %in% mismatch$V1){
+  	        if(exists("mismatch")){if(snp_name %in% mismatch$V1){
   		        snp_name<-paste0(snp_name,':',as.character(bim_gene[j,6]),':',as.character(bim_gene[j,5]))
-  	        }})
+  	        }}
   	        row<-c(as.character(anno_gene[j,7]),snp_name)
   	        snps_selected<-rbind(snps_selected,snp_name)
             SetID<-rbind(SetID,row)
@@ -237,9 +237,9 @@ SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKATO',weight
         bim_gene<-bim[exon_id,]
         for (j in 1:length(exon_id)){
 	        snp_name<-bim_gene[j,2]
-          try({if(snp_name %in% mismatch$V1){
+          if(exists("mismatch")){if(snp_name %in% mismatch$V1){
 	          snp_name<-paste0(snp_name,':',as.character(bim_gene[j,6]),':',as.character(bim_gene[j,5]))
-          }})
+          }}
       	row<-c(as.character(anno_gene[j,7]),snp_name)
         snps_selected<-rbind(snps_selected,snp_name)
         SetID<-rbind(SetID,row)
@@ -326,9 +326,9 @@ SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKATO',weight
             #aggregate the info in annovar file to get the same name as changed snp name
             snp_name<-bim_gene[j,2]
           
-  	        try({if(snp_name %in% mismatch$V1){
+  	        if(exists("mismatch")){if(snp_name %in% mismatch$V1){
   		        snp_name<-paste0(snp_name,':',as.character(bim_gene[j,6]),':',as.character(bim_gene[j,5]))
-  	        }})
+  	        }}
   
   	        row<-c(as.character(anno_gene[j,7]),snp_name)
             snps_selected<-rbind(snps_selected,snp_name)
@@ -412,9 +412,9 @@ SKAT_gene_SSD<-function(anno,bfile,resultfilename,cov=NULL,method='SKATO',weight
         for (j in 1:length(exon_id)){
           snp_name<-bim_gene[j,2]
      
-          try({if(snp_name %in% mismatch$V1){
+          if(exists("mismatch")){if(snp_name %in% mismatch$V1){
   	        snp_name<-paste0(snp_name,':',as.character(bim_gene[j,6]),':',as.character(bim_gene[j,5]))
-          }})
+          }}
   
   	      row<-c(as.character(anno_gene[j,7]),snp_name)
           snps_selected<-rbind(snps_selected,snp_name)
@@ -578,9 +578,9 @@ SKAT_gene_SSD_specific<-function(anno,bfile,gene=c(),resultfilename,cov=NULL,met
             #aggregate the info in annovar file to get the same name as changed snp name
             snp_name<-bim_gene[j,2]
   	       
-  	        try({if(snp_name %in% mismatch$V1){
+  	        if(exists("mismatch")){if(snp_name %in% mismatch$V1){
   		        snp_name<-paste0(snp_name,':',as.character(bim_gene[j,6]),':',as.character(bim_gene[j,5]))
-  	        }})
+  	        }}
   
   		      row<-c('set',snp_name)
             snps_selected<-rbind(snps_selected,snp_name)
@@ -662,9 +662,9 @@ SKAT_gene_SSD_specific<-function(anno,bfile,gene=c(),resultfilename,cov=NULL,met
         bim_gene<-bim[exon_id,]
         for (j in 1:length(exon_id)){
           snp_name<-bim_gene[j,2]
-          try({if(snp_name %in% mismatch$V1){
+          if(exists("mismatch")){if(snp_name %in% mismatch$V1){
 	          snp_name<-paste0(snp_name,':',as.character(bim_gene[j,6]),':',as.character(bim_gene[j,5]))
-          }})
+          }}
 
 	        row<-c('set',snp_name)
           snps_selected<-rbind(snps_selected,snp_name)
@@ -755,9 +755,9 @@ SKAT_gene_SSD_specific<-function(anno,bfile,gene=c(),resultfilename,cov=NULL,met
           for (j in 1:length(exon_id)){
             #aggregate the info in annovar file to get the same name as changed snp name
             snp_name<-bim_gene[j,2]
-  	        try({if(snp_name %in% mismatch$V1){
+  	        if(exists("mismatch")){if(snp_name %in% mismatch$V1){
   		        snp_name<-paste0(snp_name,':',as.character(bim_gene[j,6]),':',as.character(bim_gene[j,5]))
-  	        }})
+  	        }}
   
   		      row<-c('set',snp_name)
             snps_selected<-rbind(snps_selected,snp_name)
@@ -851,9 +851,9 @@ SKAT_gene_SSD_specific<-function(anno,bfile,gene=c(),resultfilename,cov=NULL,met
         for (j in 1:length(exon_id)){
           
   	      snp_name<-bim_gene[j,2]
-  	      try({if(snp_name %in% mismatch$V1){
+  	      if(exists("mismatch")){if(snp_name %in% mismatch$V1){
   		      snp_name<-paste0(snp_name,':',as.character(bim_gene[j,6]),':',as.character(bim_gene[j,5]))
-  	      }})
+  	      }}
   
         	row<-c('set',snp_name)
           snps_selected<-rbind(snps_selected,snp_name)
